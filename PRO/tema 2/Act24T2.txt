@@ -1,0 +1,17 @@
+Inicio Act24T2
+    i=0
+    susp=0;
+    aprob=0;
+    Mientas (i<6) Hacer
+        Leer nota
+        SI (nota < 5 && nota > 0) Entonces
+            susp++
+        sino si (nota > 4 && nota < 11) Entonces
+            aprob++
+        sino 
+            Escribir "la nota entre 1 y 10"
+        Fin SI
+    fin Mientas
+    Escribir susp
+    Escribir aprob
+Fin Act24T2

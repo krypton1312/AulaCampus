@@ -1,0 +1,31 @@
+Inicio Act22T2
+    i = 0
+    codigo = 0
+    vendido = 0
+    vendidoTotal = 0
+    FactTotal = 0
+    precio = 0
+    mas600 = 0;
+    Mientas (i < 5) Hacer 
+        Leer codigo
+        Leer vendido
+        Segun (codigo) Hacer
+            caso, 1:
+                precio = 0.6
+            caso, 2:
+                precio = 3
+            caso, 3:
+                precio: 1.25
+        fin Segun
+        vendidoTotal+=vendido
+        FactTotal+=vendido*precio
+        SI ((vendido*precio) > 600) Entonces
+            mas600++;
+        fin SI
+        i++
+    fin Mientas
+
+    Escribir FactTotal
+    Escribir vendidoTotal
+    Escribir mas600
+Fin Act22T2

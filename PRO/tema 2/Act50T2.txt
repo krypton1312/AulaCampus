@@ -1,0 +1,22 @@
+Inicio Act50T2
+    Leer numero
+    cont = 0
+    contImpar=0
+    impar = 0
+    mayorPar = 0
+    Mientas (numero => 0) Hacer
+        cont++
+        SI (numero%2=1) Entonces
+            impar+=numero
+            contImpar++;
+        SINO Entonces
+            SI(mayorPar < numero) Entonces
+                mayorPar = numero
+            Fin SI
+        Fin SI
+        Leer numero
+    fin Mientas
+    Escribir cont
+    Escribir impar/contImpar
+    Escribir mayorPar
+Fin Act50T2

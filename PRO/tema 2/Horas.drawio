@@ -1,0 +1,72 @@
+<mxfile host="Electron" modified="2024-09-19T06:52:22.190Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.7.5 Chrome/114.0.5735.289 Electron/25.8.1 Safari/537.36" etag="0R701clQ2uZVp2dUZdUN" version="21.7.5" type="device">
+  <diagram name="Página-1" id="pSVDJC3kwrDZUmBsdEqm">
+    <mxGraphModel dx="1434" dy="836" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="FNJkGhKa4nsP4qEVubEc-16" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.575;entryY=-0.033;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="FNJkGhKa4nsP4qEVubEc-1" target="FNJkGhKa4nsP4qEVubEc-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="FNJkGhKa4nsP4qEVubEc-1" value="Inicio Horas" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="370" y="70" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="FNJkGhKa4nsP4qEVubEc-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="FNJkGhKa4nsP4qEVubEc-2" target="FNJkGhKa4nsP4qEVubEc-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="FNJkGhKa4nsP4qEVubEc-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="FNJkGhKa4nsP4qEVubEc-2" target="FNJkGhKa4nsP4qEVubEc-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="FNJkGhKa4nsP4qEVubEc-2" value="Leer horas" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" vertex="1" parent="1">
+          <mxGeometry x="360" y="170" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="FNJkGhKa4nsP4qEVubEc-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="FNJkGhKa4nsP4qEVubEc-3" target="FNJkGhKa4nsP4qEVubEc-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="FNJkGhKa4nsP4qEVubEc-3" value="horas &amp;lt;= 0?" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="210" y="160" width="100" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="FNJkGhKa4nsP4qEVubEc-12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="FNJkGhKa4nsP4qEVubEc-4" target="FNJkGhKa4nsP4qEVubEc-6">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="580" y="290" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="FNJkGhKa4nsP4qEVubEc-4" value="horas &amp;gt; 40" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="530" y="160" width="100" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="FNJkGhKa4nsP4qEVubEc-21" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.567;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="FNJkGhKa4nsP4qEVubEc-5" target="FNJkGhKa4nsP4qEVubEc-20">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="FNJkGhKa4nsP4qEVubEc-5" value="pagar = horas * 12" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;size=-5;" vertex="1" parent="1">
+          <mxGeometry x="195" y="300" width="130" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="FNJkGhKa4nsP4qEVubEc-13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="FNJkGhKa4nsP4qEVubEc-6" target="FNJkGhKa4nsP4qEVubEc-7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="FNJkGhKa4nsP4qEVubEc-6" value="resto = horas - 40" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;size=-5;" vertex="1" parent="1">
+          <mxGeometry x="515" y="300" width="130" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="FNJkGhKa4nsP4qEVubEc-23" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="FNJkGhKa4nsP4qEVubEc-7" target="FNJkGhKa4nsP4qEVubEc-22">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="FNJkGhKa4nsP4qEVubEc-7" value="pagar = 12 * 40 + resto*16" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;size=-5;" vertex="1" parent="1">
+          <mxGeometry x="515" y="390" width="130" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="FNJkGhKa4nsP4qEVubEc-25" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="FNJkGhKa4nsP4qEVubEc-20" target="FNJkGhKa4nsP4qEVubEc-24">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="FNJkGhKa4nsP4qEVubEc-20" value="Escribir pagar" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" vertex="1" parent="1">
+          <mxGeometry x="195" y="390" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="FNJkGhKa4nsP4qEVubEc-26" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="FNJkGhKa4nsP4qEVubEc-22" target="FNJkGhKa4nsP4qEVubEc-24">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="FNJkGhKa4nsP4qEVubEc-22" value="Escribir pagar" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" vertex="1" parent="1">
+          <mxGeometry x="520" y="480" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="FNJkGhKa4nsP4qEVubEc-24" value="FIn Horas" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="354" y="585" width="120" height="60" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

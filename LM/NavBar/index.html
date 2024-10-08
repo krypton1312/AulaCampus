@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+    <html lang="es-ES">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>NavBar</title>
+            <script src="https://kit.fontawesome.com/200add49a1.js" crossorigin="anonymous"></script>
+        </head>
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+            ul{
+                padding-bottom: 10px;
+                list-style: none;
+                background-color: rgb(85, 85, 84);
+                width: 100vw;
+                height: 4rem;
+                
+            }
+            li{
+                float: left;
+                margin-right: 5%;
+                height: 100%;
+                text-align: center;
+                width: 5rem;
+                padding-top: 1%;
+                a{
+                    color: whitesmoke;
+                    text-decoration: none;
+                    font-size: 20px;
+    
+                }
+            }
+            li a{
+                color: whitesmoke;
+                text-decoration: none;
+                font-size: 20px;
+            }
+            .activo{
+                background-color: rgb(99, 155, 88);
+                border-radius: 8px;
+                border-color: black;
+                border: 2px solid black;
+            }
+            i{
+                font-size: 30px;
+            }
+    
+            li.user{
+                margin-right: 1%;
+                float: right
+            }
+        </style>
+        <body>
+            <nav>
+                <ul>
+                    <li class="activo"><a href="#"><i class="fa-solid fa-house"></i></a></li>
+                    <li><a href="#">Proyectos</a></li>
+                    <li><a href="#">Contactos</a></li>
+                    <li class = "user"><a href="#"><i class="fa-solid fa-user"></i></a></li>
+                </ul>
+            </nav>
+        </body>
+    </html>

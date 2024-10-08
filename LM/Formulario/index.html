@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+    <html lang="es-ES ru-RU">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Formulario</title>
+        </head>
+        <body>
+            <form>
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre">
+                <br>
+                <label for="telefono">Telefono</label>
+                <input type="number" id="telefono">
+                <br>
+                <label for="email">Email:</label>
+                <input type="email" id="email">
+                <br>
+                <label for="contraseña">Contraseña:</label>
+                <input type="password" id="contraseña">
+                <br>
+                <label for="fecha">Fecha:</label>
+                <input type="date" id="fecha">
+                <br>
+                <label for="archivo">Sube tu foto:</label>
+                <input type="file" id="archivo">
+                <br>
+                <label for="genero">Genero:</label>
+                <br>
+                <input type="radio" id="genero" name="genero" value="Hombre">Hombre
+                <input type="radio" id="genero" name="genero" value="Mujer">Mujer
+                <input type="radio" id="genero" name="genero" value="no lo se">no lo se
+                <br>
+                <input type="checkbox" id="checkbox">Confirmo
+                <br>
+                <select name="Coches" id="Coches">
+                    <option disabled selected>-- Selecciona opcion --</option>
+                    <option value="Toyota">Toyota</option>
+                    <option value="Ford">Ford</option>
+                    <option value="Honda">Honda</option>
+                    <option value="BMW">BMW</option>
+                </select>
+                <br>
+                <textarea name="comentario" id="comentario" cols="30" rows="10" maxlength="250"></textarea>
+                <br>
+                <small>Max 250 caracteres</small>
+                <input type="submit" value="Enviar">
+            </form>
+        </body>
+    </html>

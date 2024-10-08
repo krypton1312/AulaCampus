@@ -1,0 +1,26 @@
+Inicio Act20T2
+    edadAlumno = 0
+    alturaAlumno = 0
+    edadMedia = 0
+    alturaMedia = 0
+    contadorAlumnosEdad = 0
+    contadorAlumnosAltura= 0
+    i = 1
+    Mientras(i <= 5) Hacer
+        Leer edadAlumno
+        Leer alturaAlumno
+        alturaMedia+=alturaAlumno
+        edadMedia+=edadAlumno
+        SI (edadAlumno > 18) Entonces
+            contadorAlumnosEdad++
+        fin SI
+        SI (alturaAlumno > 1.75) Entonces
+            contadorAlumnosAltura++
+        fin SI
+        i++
+    fin Mientras
+    Escribir edadMedia/5
+    Escribir alturaMedia/5
+    Escribir contadorAlumnosEdad
+    Escribir contadorAlumnosAltura
+Fin Act20T2

@@ -1,0 +1,13 @@
+Inicio Act51T2
+    cont = 0
+    total = 0
+    Mientas (total <= 10000) Hacer
+        Leer numero
+        cont++
+        total+=numero
+    fin Mientas
+    Escribir total
+    Escribir cont
+    Escribir total/cont
+Fin Act22T2        
+

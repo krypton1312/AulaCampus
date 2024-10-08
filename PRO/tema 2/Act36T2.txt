@@ -1,0 +1,14 @@
+Inicio Act32T2
+    Leer nota1
+    Leer nota2
+    media = (nota1+nota2)/2
+    SI (media < 5) Entonces
+        Leer recuperacion
+        SI (recuperacion = apto) Entonces
+            media = 5
+        SINO Entonces
+            media = 1
+        fin SI
+    SINO
+        Escribir media
+fin Act32T2
