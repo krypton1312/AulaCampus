@@ -9,5 +9,6 @@ public class ac1ej1 {
 		euro = scanner.nextLine();
 		double pesetas = Double.parseDouble(euro) * 166.386;
 		System.out.println("Pesetas: " + pesetas);
+		scanner.close();
 	}
 }
