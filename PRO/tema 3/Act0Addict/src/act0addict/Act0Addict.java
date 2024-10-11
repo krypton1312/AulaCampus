@@ -7,5 +7,8 @@ public class Act0Addict {
         veh2.mostrarDatos();
         veh1.changePrecio(15000);
         veh1.mostrarDatos();
+        
+        System.out.println("");
+        System.out.println("Precio del coche 2: " + veh1.getPrecio());
     }
 }
