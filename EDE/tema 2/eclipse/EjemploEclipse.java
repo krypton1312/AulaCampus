@@ -27,6 +27,7 @@ public class EjemploEclipse {
 		System.out.println("Escribe palabra, para acabar escribe 'fin'");
 		int cont = 0;
 		String text = sc.nextLine();
+		
 		while(!text.equals("fin")) {
 			cont++;
 			text = sc.nextLine();
