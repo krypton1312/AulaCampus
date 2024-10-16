@@ -9,13 +9,10 @@ public class TiendaInformatica {
         miPortatil.setDescripcion("Lenovo I5");
         miPortatil.setPrecio(560.45);
         miPortatil.mostrarDatos();
-        miPortatil.muestraNumDefectuosos();
-        Portatiles tuPortatil = new Portatiles();
-        tuPortatil.setCodigo(5);
-        tuPortatil.setDescripcion("Asus I5");
-        tuPortatil.setPrecio(900.45);
+        Portatiles.muestraNumDefectuosos();
+        Portatiles tuPortatil = new Portatiles(5,"Asus I5", 900.45);
         tuPortatil.setDefectuoso(true);
         tuPortatil.mostrarDatos();
-        tuPortatil.muestraNumDefectuosos();
+        Portatiles.muestraNumDefectuosos();
     }
 }

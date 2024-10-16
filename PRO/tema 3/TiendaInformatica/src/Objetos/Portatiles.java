@@ -10,7 +10,7 @@ public class Portatiles {
     public Portatiles(){
         this.defectuoso=false;
     }
-    public Portatiles(int codigo, String descripton, double precio){
+    public Portatiles(int codigo, String descripcion, double precio){
         this.codigo = codigo;
         this.descripcion = descripcion;
         this.precio = precio;
