@@ -6,7 +6,8 @@ import objetos.Finanzas;
 import objetos.Proveedor;
 import objetos.Producto;
 import objetos.Cuenta;
-
+import objetos.Medico;
+import objetos.Libro;
 
 public class Actividades {
 
@@ -73,9 +74,8 @@ public class Actividades {
         
         System.out.println("IVA de " + productoHardware.getNombreProducto() + " es: " + productoHardware.getIVA() + " y precio final es: " + (productoHardware.getIVA() + productoHardware.getPrecio()));
         System.out.println("IVA de " + productoSoftware.getNombreProducto() + " es: " + productoSoftware.getIVA() + " y precio final es: " + (productoSoftware.getIVA() + productoSoftware.getPrecio()));
-        */
- 
-        /*ej 17
+         */
+ /*ej 17
         Cuenta cuentaParticular1 = new Cuenta("Jose");
         
         Cuenta cuentaEmpresa1 = new Cuenta("Ryan Corp", 300);
@@ -88,8 +88,33 @@ public class Actividades {
         
         cuentaEmpresa1.muestraDatos();
         cuentaParticular1.muestraDatos();
+         */
+ 
+/* ej 18
+        Medico medicoDigestivo = new Medico(
+                "MD001", "Juan Pérez", "12345678A", "Calle Salud, 15", "600123456",
+                "Madrid", "12/05/1975", "Digestivo", 4500.00);
+        Medico medicoTraumatologo = new Medico(
+                "MD002", "Ana García", "87654321B", "Avenida Medica, 23", "600987654",
+                "Barcelona", "24/08/1980", "Traumatología", 7000);
+        
+        medicoDigestivo.setSueldo(5000);
+        System.out.println(medicoDigestivo.getSueldo());
+        medicoTraumatologo.setDni("42933038N");
+        System.out.println(medicoTraumatologo.getDni());
+        
+        medicoDigestivo.retencionMedico(30);
+        medicoTraumatologo.retencionMedico(20);
+        System.out.println(medicoDigestivo);
+        System.out.println(medicoTraumatologo);
         */
         
+        Libro libroInformatica = new Libro("GregInf", "yehor", "krypton", 50, false);
+        System.out.println(libroInformatica.getTitulo());
+        libroInformatica.setEditorial("anonimo");
+        libroInformatica.prestamo();
+        libroInformatica.prestamo();
+        libroInformatica.devolucion();
         
     }
 }
