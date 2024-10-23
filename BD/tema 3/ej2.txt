@@ -1,0 +1,27 @@
+Cliente(DNI_C, nombre, DNI_V)
+CP{DNI_C}
+CAj{DNI_V} referencia a Vendedor
+UNI{DNI_V}
+VNN{DNI_V}
+
+Compra(DNI_C, Codigo_P)
+CP{DNI_C, Codigo_P}
+CAj{DNI_C} referencia a Cliente
+VNN{Codigo_C}
+CAj{Codigo_P} referencia a Producto
+
+Producto(Codigo_P, Description, Codigo_A)
+CP{Codigo}
+CAj{Codigo_A} referencia a Almacen
+UNI{Codigo_A}
+VNN{Codigo_A}
+
+Vendedor(DNI_V, NSS, Nombre)
+CP{DNI_V}
+UNI{NSS}
+
+
+Almacen(Codigo_A, Direccion, Nombre)
+CP{Codigo_A)
+
+

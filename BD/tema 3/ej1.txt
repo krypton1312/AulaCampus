@@ -1,0 +1,10 @@
+Alumno(DNI, nombre)
+CP{DNI}
+
+Curso(Codigo, Nombre, Numero)
+CP{Codigo}
+
+Asistir(Codigo, DNI, nota)
+CP{Codigo, DNI}
+CAj{Codigo} referencia a Curso
+Caj{DNI} referencia a Alumno

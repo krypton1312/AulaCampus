@@ -1,0 +1,21 @@
+Revision(Codigo_R, Descrip)
+CP{Codigo_R}
+
+Pasar(Codigo_R, Codigo_A, fecha, observ)
+CP{Codigo_R, Codigo_A}
+CAj{Codigo_R} referencia a Revision
+CAj{Codigo_A}referencia a Animal
+
+Animal(Codigo_A, nombre, especie, fechaNacim, pais de origen)
+CP{Codigo_A}
+
+Tener(Codigo_A, DNI)
+CP{Codigo_A, DNI}
+CAj{Codigo_A}referencia a Animal
+CAj{DNI} referencia a Cuidador
+VNN{DNI}
+
+Cuidador(DNI, NNS, correoEl, Nombre,Apellido)
+CP{DNI}
+UNI{NSS}
+VNN{NSS}

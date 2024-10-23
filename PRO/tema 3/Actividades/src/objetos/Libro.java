@@ -67,27 +67,34 @@ public class Libro {
     public void setPrestado(boolean prestado) {
         this.prestado = prestado;
     }
-    public boolean prestamo(){
-        if(numEjemplares > 0){
-            this.prestado = true;
-            this.numPrestados++;
-            return true;
-        }else{
-            return false;
+       public boolean prestar() {
+        if (numEjemplares > numPrestados) {
+            numPrestados++;
+            return true; 
         }
-    }
-    public boolean devolucion(){
-        if(prestado){
-            this.numPrestados--;
-            if(numPrestados < 1){
-                this.prestado = false;
-            }
-            return true;
-        }else{
-            return false;
-        }
+        return false; 
     }
 
+
+    public boolean devolver() {
+        if (numPrestados > 0) {
+            numPrestados--;
+            return true; 
+        }
+        return false; 
+    }
+
+    // Método perdido
+    public boolean perdido() {
+        if (numEjemplares > 0) {
+            numEjemplares--; 
+            if (numPrestados > numEjemplares) {
+                numPrestados = numEjemplares; 
+            }
+            return true;
+        }
+        return false; 
+    }
     @Override
     public String toString() {
         return "Libro{" + "titulo=" + titulo + ", autorl=" + autorl + ", editorial=" + editorial + ", numEjemplares=" + numEjemplares + ", prestado=" + prestado + '}';

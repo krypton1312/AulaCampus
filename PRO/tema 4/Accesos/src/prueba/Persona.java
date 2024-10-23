@@ -1,12 +1,19 @@
-package accesos;
+package prueba;
 public class Persona {
     private int id;
     protected String nombre;
     public int edad;
-    
-    private void mostrarDatos(){
-        System.out.println(id);
-        System.out.println(nombre);
-        System.out.println(edad);
+
+    public Persona() {
     }
+    
+    
+    public void miAccesso(){
+       Persona miPersona = new Persona();
+        System.out.println(miPersona.id);
+        System.out.println(miPersona.nombre);
+        System.out.println(miPersona.edad);
+    }
+    
+    
 }
