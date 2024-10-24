@@ -1,0 +1,14 @@
+Musico(DNI, nombre)
+CP{DNI}
+
+Disco(codigo_D, año, titulo)
+CP{codigo_D}
+
+Cancion(codigo_C, titulo)
+CP{codigo_C}
+
+compone(DNI, codigo_D, codigo_C)
+CP{DNI, codigo_D, codigo_C}
+CAj{DNI} referencia a Musico
+CAj{codigo_D} referencia a Disco
+CAj{codigo_C} referencia a Cancion

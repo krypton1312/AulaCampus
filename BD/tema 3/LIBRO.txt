@@ -1,0 +1,32 @@
+Autor(nombre)
+CP{nombre}
+
+autorea(nombre, titulo)
+CP{nombre, titulo}
+CAj{nombre} ref a Autor
+CAj{titulo} ref a Libro
+VNN{nombre}
+VNN{titulo}
+
+Libro(titulo, IBSN)
+CP{titulo}
+CAj{ISBN} ref a Edicion
+VNN{ISBN}
+
+Edicion(ISBN, año, idioma, titulo)
+CP{ISBN}
+VNN{titulo}
+VNN{id_C}
+
+Copia(id_C, numero, ISBN)
+CP{id_C}
+CAj{ISBN} ref a Edicion
+VNN{ISBN}
+
+Usario(RUT, nombre)
+CP{RUT}
+
+prestamo(RUT, ID_C, fecha_delovucion, fecha_prestamo)
+CP{RUT, ID_C}
+CAj{RUT} ref a Usario
+CAj{ID_C} ref a Copia

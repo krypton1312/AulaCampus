@@ -1,0 +1,16 @@
+Empleado(DNI, nombre, direccion, dirigido)
+CP{DNI}
+
+Trabaja en(dirigir, DNI,codigo,DNI_D)
+CP{DNI, codigo}
+CAj{DNI} ref a Empleado
+CAj{Codigo} ref a Sucursal
+CAj{DNI_D} ref a Director
+
+Sucurcal(Codigo, direccion)
+CP{Codigo}
+
+Director{DNI, NSS, nombre}
+CP{DNI}
+UNI{NSS}
+VNN{NSS}

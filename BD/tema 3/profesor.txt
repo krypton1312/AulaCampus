@@ -1,0 +1,15 @@
+Profesor(#DNI, nombre)
+CP{DNI}
+
+Curso(codigo_C, description)
+CP{codigo_C}
+
+Asignatura(codigo_A, description)
+CP{codigo_A}
+
+imparte(DNI, codigo_A, codigo_C)
+CP{codigo_A, codigo_C}
+VNN{DNI}
+CAj{codigo_A} ref a Asignatura
+CAj{codigo_C} ref a Curso
+CAj{#DNI} ref a Profesor
