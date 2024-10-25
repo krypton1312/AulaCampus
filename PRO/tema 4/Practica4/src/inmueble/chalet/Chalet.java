@@ -53,8 +53,8 @@ public class Chalet extends Inmueble {
             this.comision += 500;
         }
 
-        this.comision += precioOriginal * 0.05;
-        setPrecio(getPrecio() + precioOriginal * 0.05);
+        this.comision += precioOriginal * 0.1;
+        setPrecio(getPrecio() + precioOriginal * 0.1);
     }
 
 
