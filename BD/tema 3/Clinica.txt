@@ -1,0 +1,25 @@
+Persona(codigo,nombre, apellidos, telefono)
+CP{codigo}
+
+Paciente(codigo, direccion, poblacion, provincia, codigoPostal)
+CP{codigo}
+CAj{codigo} ref a Persona
+
+Medico(codigo, especialidad)
+CP{codigo}
+CAj{codigo} ref a Persona
+
+Ingreso(codigo, habitaciones, cama)
+CP{codigo}
+
+realiza(codigo,codigo)
+CP{codigo,codigo}
+CAj{codigo} ref a Ingreso
+CAj{codigo} ref a Paciente
+
+Atiende(codigo_P,codigo_M, codigo_I, fechaIN)
+CP{codigo_P,codigo_M, codigo_I}
+VNN{codigo_M}
+CAj{codigo_I} ref a Ingreso
+CAj{codigo_P} ref a Paciente
+CAj{codigo_M} ref a Medico

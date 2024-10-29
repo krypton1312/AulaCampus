@@ -1,0 +1,24 @@
+Categoria(ID, Nombre, Description, ID_Producto)
+CP{ID}
+CAj{ID_Producto} ref a Producto
+
+Producto(ID_Producto, Nombre, Precio, Stock)
+CP{ID}
+
+Proveedor(RUT, Nombre, Teléfono, Dirección, WEB, ID_Producto)
+CP{RUT}
+CAj{ID_Producto} ref a Producto
+
+Cliente(RUT, Nombre, Teléfono, Dirección, ID_Venta)
+CP{RUT}
+CAj{ID_Venta} ref a Venta
+
+Venta(ID_Venta, Fecha, MontoFinal, Descuento)
+CP{ID_Venta}
+
+Detalle(ID_Producto, ID_Venta, Cantidad)
+CP{ID_Producto, ID_Venta}
+CAj{ID_Producto} ref a Producto
+CAj{ID_Venta} ref a Venta
+
+

@@ -1,0 +1,29 @@
+Profesor(DNI, direccion, telefono)
+CP{DNI}
+
+Modulo(codigo, nombre, DNI)
+CP{codigo}
+CAj{DNI} ref a Profesor
+
+Alumno(num_exp, nombre, apellido, fechaNacim)
+CP{num_exp}
+
+Curso(id, nombre, num_exp)
+CP{id}
+CAj{num_exp} ref a Alumno
+UNI{num_exp}
+
+matriculado(codigo, num_exp)
+CP{codigo, num_exp}
+CAj{num_exp} ref a Alumno
+CAj{codigo} ref a Modulo
+
+asosiado(id,codigo)
+CP{id, codigo}
+CAj{id} ref a Curso
+CAj{codigo} ref a Modulo
+
+esta(id,num_exp)
+CP{id,num_exp}
+CAj{num_exp} ref a Alumno
+CAj{id} ref a Curso
