@@ -1,0 +1,19 @@
+.col{
+    border: 2px solid black;
+}
+.col-3{
+    border: 2px solid black;
+}
+.container-fluid{
+    margin-top: 10px;
+    background-color: lightgray;
+}
+.container{
+    margin-top: 10px;
+    background-color: lightgray;
+}
+h1{
+    font-size: 50px;
+    color: red;
+    text-align: center;
+}
