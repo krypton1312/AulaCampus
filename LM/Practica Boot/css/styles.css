@@ -1,0 +1,11 @@
+.carousel-inner {
+    background-color: gray; 
+}
+
+.carousel-inner img {
+    max-width: 70%;
+    margin: 0 auto;
+    display: block;
+    object-fit: contain;
+    object-position: center; 
+}

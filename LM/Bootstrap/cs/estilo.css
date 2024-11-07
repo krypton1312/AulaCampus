@@ -1,6 +1,9 @@
 .col{
     border: 2px solid black;
 }
+.col-2{
+    border: 2px solid black;
+}
 .col-3{
     border: 2px solid black;
 }
@@ -16,4 +19,7 @@ h1{
     font-size: 50px;
     color: red;
     text-align: center;
+}
+.logo{
+    width: 100%;
 }
