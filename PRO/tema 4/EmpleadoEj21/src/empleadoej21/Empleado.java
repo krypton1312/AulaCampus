@@ -17,8 +17,7 @@ public class Empleado implements Calculacion{
         this.numHijos = numHijos;
         this.desplazamiento = desplazamiento;
         this.categoriaLaboral = categoriaLaboral;
-        setSueldo(calculaPlus());
-        setSueldo(calculaRetencion());
+        setSueldo(this.sueldo + calculaPlus() - calculaRetencion());
     }
 
     public String getCodigo() {
@@ -80,29 +79,29 @@ public class Empleado implements Calculacion{
     public double calculaRetencion(){
         switch(this.categoriaLaboral){
             case 1: 
-                return this.sueldo - (this.sueldo * 0.1);
+                return this.sueldo * 0.1;
             case 2:
-                return this.sueldo - (this.sueldo * 0.15);
+                return this.sueldo * 0.15;
             case 3: 
-                return this.sueldo - (this.sueldo * 0.2);
+                return this.sueldo * 0.2;
             case 4:
-                return this.sueldo - (this.sueldo * 0.3);
+                return this.sueldo * 0.3;
             default:
-                return sueldo;
+                return 0;
         }
     }
     @Override
     public double calculaPlus(){
         if(this.numHijos == 0 && !desplazamiento){
-            return this.sueldo + (this.sueldo * 0.03);
+            return this.sueldo * 0.03;
         }else if(this.numHijos > 0 && !desplazamiento){
-            return this.sueldo + (this.sueldo * 0.05);
+            return this.sueldo * 0.05;
         }else if(this.numHijos == 0 && desplazamiento){
-            return this.sueldo + (this.sueldo * 0.08);
+            return this.sueldo * 0.08;
         }else if(this.numHijos > 0 && desplazamiento){
-            return this.sueldo + (this.sueldo * 0.1);
+            return this.sueldo * 0.1;
         }
-        return this.sueldo;
+        return 0;
     }
     
     @Override
