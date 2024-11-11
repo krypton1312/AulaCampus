@@ -39,6 +39,8 @@ public class Vivenda extends Inmueble {
         this.exterior = exterior;
     }
     
+    
+    @Override
     public void comision(){
         this.comision = getPrecio()*0.05;
         setPrecio(getPrecio()*0.05);

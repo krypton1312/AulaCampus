@@ -12,7 +12,7 @@ public class Chalet extends Inmueble {
         this.parcelaMetros = parcelaMetros;
         this.piscina = piscina; 
         this.paellero = paellero;
-        comisionChalet();
+        comision();
     }
 
     public double getParcelaMetros() {
@@ -39,7 +39,8 @@ public class Chalet extends Inmueble {
         this.paellero = paellero;
     }
     
-    public void comisionChalet() {
+    @Override
+    public void comision() {
         double precioOriginal = getPrecio();
         this.comision = 0;
 

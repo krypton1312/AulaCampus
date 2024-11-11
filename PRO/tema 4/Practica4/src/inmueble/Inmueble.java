@@ -105,4 +105,6 @@ public class Inmueble {
         return "Inmueble{" + "codigo=" + codigo + ", tipo=" + tipo + ", direccion=" + direccion + ", poblacion=" + poblacion + ", metrosCuad=" + metrosCuad + ", habitaciones=" + habitaciones + ", ba\u00f1os=" + baños + ", garaje=" + garaje + ", precio=" + precio + ", precio con IVA=" + calculaIVA() + '}';
     }
     
+    public void comision(){
+    } 
 }
