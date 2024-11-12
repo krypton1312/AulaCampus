@@ -1,0 +1,77 @@
+Persona(id, nombre, estado)
+CP{id}
+
+Entrenador(id, ciudad de origen)
+CP{id}
+CAj{id} referencia a Persona
+
+Lider(id, sueldo, id_g)
+CP{id}
+CAj{id} referencia a Persona
+CAj{id_g} referencia a Gym
+VNN{id_g}
+Lx: Lider, Cx: Competir
+Ɐ Lx(Lider(Lx) -> Ǝ Cx(Competir(Cx) ↑ Lx.id = Cx.id_l))
+
+Medalla(id_med)
+CP{id_med}
+Mx: Medalla, Cx: Competir
+Ɐ Mx(Medalla(Mx) -> Ǝ Cx(Competir(Cx) ↑ Mx.id_med = Cx.id_med))
+Mx: Medalla, Gx: Gym
+Ɐ Mx(Medalla(Mx) -> Ǝ Gx(Gym(Gx) ↑ Mx.id_med = Gx.id_med))
+
+Gym(id_g, id_med, id_t)
+CP{id_g}
+CAj{id_m} referencia a Medalla
+VNN{id_m}
+UNI{id_m}
+VNN{id_t}
+CAj{id_t} referencia a Tipos
+Gx: Gym, Lx: Lider
+Ɐ Gx(Gym(Gx) -> Ǝ Lx(Lider(Lx) ↑ Gx.id = Lx.id))
+
+Tipos(id_t)
+CP{id_t}
+Ix: Tipos, Tx: Tiene
+Ɐ Ix(Tipos(Ix) -> Ǝ Tx(Tiene(Tx) ↑ Ix.id_t = Tx.id_t))
+
+Pokemon(id_p, id_prevaluciona, id_evaluciona, id)
+CP{id_p}
+CAj{id_prevaluciona} referencia a Pokemon
+UNI{id_prevaluciona}
+CAj{id_evaluciona} referencia a Pokemon
+CAj{id} referencia a Persona
+VNN{id}
+Px: Pokemon, Tx: Tiene
+Ɐ Px(Pokemon(Px) -> Ǝ Tx(Tiene(Tx) ↑ Px.id_p = Tx.id_p))
+
+Competir(id_l, id_e, id_med)
+CP{id_l, id_e}
+VNN{id_m, id_l}
+CAj{id_l} referencia a Lider
+CAj{id_e} referencia a Entrenador
+CAj{id_med} referencia a Medalla
+
+Es eficaz(id_t1, id_t2)
+CP{id_t1, id_t2}
+CAj{id_t1} referencia a Tipos
+CAj{id_t2} referencia a Tipos
+
+Es poco eficaz(id_t1, id_t2)
+CP{id_t1, id_t2}
+CAj{id_t1} referencia a Tipos
+CAj{id_t2} referencia a Tipos
+
+No afecta(id_t1, id_t2)
+CP{id_t1, id_t2}
+CAj{id_t1} referencia a Tipos
+CAj{id_t2} referencia a Tipos
+
+Tiene(id_p, id_t)
+CP{id_p, id_t}
+CAj{id_t} referencia a Tipos
+CAj{id_p} referencia a Pokemon
+
+
+
+
