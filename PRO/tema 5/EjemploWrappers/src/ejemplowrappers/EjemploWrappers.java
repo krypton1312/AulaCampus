@@ -35,8 +35,7 @@ public class EjemploWrappers {
        String convBinario = Integer.toBinaryString(numeroEntero);
        String convOctal = Integer.toOctalString(numeroEntero);
        String convHexadecimal = Integer.toHexString(numeroEntero);
-       
-        System.out.println(convBinario + "\n" + convOctal + "\n" + convHexadecimal);
+       System.out.println(convBinario + "\n" + convOctal + "\n" + convHexadecimal);
        
     }
 }
