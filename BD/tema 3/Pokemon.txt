@@ -47,7 +47,8 @@ Px: Pokemon, Tx: Tiene
 
 Competir(id_l, id_e, id_med)
 CP{id_l, id_e}
-VNN{id_m, id_l}
+VNN{id_m}
+VNN{id_l}
 CAj{id_l} referencia a Lider
 CAj{id_e} referencia a Entrenador
 CAj{id_med} referencia a Medalla
