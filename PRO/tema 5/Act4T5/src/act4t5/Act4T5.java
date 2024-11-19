@@ -1,11 +1,14 @@
 package act4t5;
+
 import java.util.Scanner;
 
 public class Act4T5 {
+
     public static void main(String[] args) {
         Scanner s = new Scanner(System.in);
-        
+
         int num1 = s.nextInt();
+        s.nextLine();
         int num2 = s.nextInt();
         s.nextLine();
         String operacion = s.nextLine();
@@ -23,7 +26,6 @@ public class Act4T5 {
             default:
                 break;
         }
-        
         System.out.println(Integer.toBinaryString(num3));
         System.out.println(Integer.toOctalString(num3));
         System.out.println(Integer.toHexString(num3));
