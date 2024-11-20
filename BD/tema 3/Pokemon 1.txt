@@ -41,14 +41,12 @@ CAj{id_prevaluciona} referencia a Pokemon
 UNI{id_prevaluciona}
 CAj{id_evaluciona} referencia a Pokemon
 CAj{id} referencia a Persona
-VNN{id}
 Px: Pokemon, Tx: Tiene
 Ɐ Px(Pokemon(Px) -> Ǝ Tx(Tiene(Tx) ↑ Px.id_p = Tx.id_p))
 
 Competir(id_l, id_e, id_med)
 CP{id_l, id_e}
-VNN{id_m}
-VNN{id_l}
+VNN{id_m, id_l}
 CAj{id_l} referencia a Lider
 CAj{id_e} referencia a Entrenador
 CAj{id_med} referencia a Medalla

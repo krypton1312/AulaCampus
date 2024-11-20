@@ -1,0 +1,60 @@
+Skin(codigo_skin)
+CP{codigo_skin}
+
+Videojuego(id_videojuego)
+CP{id_videojuego}
+Vx: Viegojuego, Cx:Compite
+Ɐ Vx(Videojuero(Vx) -> Ǝ Cx(Compite(Cx) ^ Vx.id_viedojuego = Cx.id_viedojuego)
+Vx: Viegojuego, Tx:Tiene
+Ɐ Vx(Videojuero(Vx) -> Ǝ Tx(Tiene(Tx) ^ Vx.id_viedojuego = Tx.id_viedojuego)
+
+
+Torneo(codigo_torneo)
+CP{codigo_torneo}
+Tx: Torneo, Cx:Compite
+Ɐ Tx(Torneo(Tx) -> Ǝ Cx(Compite(Cx) ^ Tx.codigo_torneo = Cx.codigo_torneo)
+
+Jugador(DNIr, correo_usario)
+CP{DNI}
+CAj{DNI} referencia a Persona
+Jx: Jugador, Cx:Compite
+Ɐ Jx(Jugador(Jx) -> Ǝ Cx(Compite(Cx) ^ Jx.DNI= Cx.DNI_jugador)
+
+Admin(DNI, correo_trabajador)
+CP{DNI}
+CAj{DNI} referencia a Persona
+
+Persona(DNI)
+CP{DNI}
+
+Tiene(codigo_skin, id_videojuego, DNI_jugador)
+CP{codigo_skin, DNI_jugador}
+VNN{id_videojuego}
+CAj{codigo_skin} referencia a Skin
+CAj{id_videojuego} referencia a Videojuego
+CAj{DNI_jugador} referencia a Jugador
+
+Juega(id_videojuego, DNI_jugador)
+CP{id_videojuego, DNI_jugador}
+CAj{id_videojuego} referencia a Videojuego
+CAj{DNI_jugador} referencia a Jugador
+VNN{id_videojuego}
+
+Compite(codigo_torneo, id_videojuego, DNI_jugador, compensa)
+CP{codigo_torneo, DNI_jugador}
+VNN{id_videojuego}
+CAj{codigo_torneo} referencia a Torneo
+CAj{DNI_jugador} referencia a Jugador
+CAj{id_videojuego} referencia a Videojuego
+
+Amigo(DNI_Jugador1,DNI_Jugador2)
+CP{DNI_Jugador1,DNI_Jugador2}
+CAj{DNI_Jugador1} referencia a Amigo
+CAj{DNI_Jugador2} referencia a Amigo
+
+Penalizan(DNI_admin, DNI_jugador, id_videojuego)
+CP{DNI_jugador, id_videojuego}
+VNN{DNI_admin}
+CAj{DNI_admin} referencia a Admin
+CAj{DNI_jugador} referencia a Jugador
+CAj{id_videojuego} referencia a Videojuego
