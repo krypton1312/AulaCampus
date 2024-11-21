@@ -1,0 +1,42 @@
+Acesso(codigo_acesso, direccion, codigo_estacion)
+CP{codigo_acesso}
+CAj{codigo_estacion} referencia a Estacion
+VNN{codigo_estacion}
+
+Estacion(codigo_estacion, direccion, codigoPostal)
+CP{codigo_Estacion}
+Ex: Estacion, Ax: Acesso
+Ɐ Ex(Estacion(Ex) -> Ǝ Ax(Acesso(Ax) ^ Ex.codigo_estacion = Ax.codigo_estacion)
+Ex: Estacion, Cx: Compuesta
+Ɐ Ex(Estacion(Ex) - > Ǝ (Cx(Compuesto(Cx) -> Ex.codigo_estacion = Cx.codigo_estacion) 
+Ex: Estacion, Ax: Asignado
+Ɐ Ex(Estacion(Ex) - > Ǝ (Ax(Asignado(Ax) -> Ex.codigo_estacion = Ax.codigo_estacion) 
+
+Linia(codigo_linia, desripcion)
+CP{codigo_linia}
+Lx:Linia, Cx:Compuesta
+Ɐ Lx(Linia(Lx) -> Ǝ Cx(Compuesta(Cx) ^ Lx.codigo_linia = Cx.codigo_linia)
+
+Tren(codigo_tren, capacidad, fecha_de_entrada, fecha_de_revision, codigo_linia)
+CP{codigo_tren}
+CAj{codigo_linia} referencia a Linia
+
+Cochera(codigo_cochera, direccion, codigoPostal)
+CP{codigo_cochera}
+Cx: Cochera, Ax: Asignado
+Ɐ Cx(Cochera(Cx) -> Ǝ Ax(Asignado(Ax) -> Cx.codigo_cochera = Ax.codigo_cochera)
+
+Compuesta(codigo_linia, codigo_estacion, orden)
+CP{codigo_linia, codigo_estacion}
+CAj{codigo_linia} referencia a Linia
+CAj{codigo_estacion} referencia a Estacion
+VNN{codigo_linia, codigo_estacion}
+
+Asignado(codigo_tren, codigo_cochera, codigo_estacion)
+CP{codigo_tren, codigo_cochera}
+VNN{codigo_estacion}
+UNI{codigo_tren, codigo_estacion}
+CAj{codigo_tren} referencia a Tren
+CAj{codigo_cochera} referencia a Cochera
+CAj{codigo_estacion} referencia a Estacion
+VNN{codigo_cochera}
