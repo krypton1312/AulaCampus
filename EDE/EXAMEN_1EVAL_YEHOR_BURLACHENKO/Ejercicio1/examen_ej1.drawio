@@ -1,0 +1,101 @@
+<mxfile host="Electron" modified="2024-11-26T09:30:35.577Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.7.5 Chrome/114.0.5735.289 Electron/25.8.1 Safari/537.36" etag="avKbZWoj1c_IonmtHYwl" version="21.7.5" type="device">
+  <diagram name="Página-1" id="sAGuxUGwxR-ZBEDZTLuj">
+    <mxGraphModel dx="838" dy="973" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="eMSgZnnff6qSy2CHFZ15-1" value="Crear el Diagrama de Flujo que permita realizar el diseño del siguiente problema:&lt;br/&gt;Pedir números por teclado hasta introducir un cero. Al finalizar mostrar si se ha introducido &lt;br/&gt;algún número negativo." style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry y="30" width="510" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="eMSgZnnff6qSy2CHFZ15-11" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="eMSgZnnff6qSy2CHFZ15-2" target="eMSgZnnff6qSy2CHFZ15-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="eMSgZnnff6qSy2CHFZ15-2" value="Inicio examen_ej1" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="525" y="80" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="eMSgZnnff6qSy2CHFZ15-12" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="eMSgZnnff6qSy2CHFZ15-3" target="eMSgZnnff6qSy2CHFZ15-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="eMSgZnnff6qSy2CHFZ15-3" value="int numero" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="525" y="180" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="eMSgZnnff6qSy2CHFZ15-13" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="eMSgZnnff6qSy2CHFZ15-4" target="eMSgZnnff6qSy2CHFZ15-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="eMSgZnnff6qSy2CHFZ15-4" value="bool negativo = false" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="525" y="280" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="eMSgZnnff6qSy2CHFZ15-14" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="eMSgZnnff6qSy2CHFZ15-5" target="eMSgZnnff6qSy2CHFZ15-6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="eMSgZnnff6qSy2CHFZ15-5" value="Leer numero" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" vertex="1" parent="1">
+          <mxGeometry x="525" y="383.5" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="eMSgZnnff6qSy2CHFZ15-15" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="eMSgZnnff6qSy2CHFZ15-6" target="eMSgZnnff6qSy2CHFZ15-9">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="eMSgZnnff6qSy2CHFZ15-25" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="eMSgZnnff6qSy2CHFZ15-6" target="eMSgZnnff6qSy2CHFZ15-24">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="eMSgZnnff6qSy2CHFZ15-6" value="numero = 0" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="545" y="480" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="eMSgZnnff6qSy2CHFZ15-19" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="eMSgZnnff6qSy2CHFZ15-7" target="eMSgZnnff6qSy2CHFZ15-18">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="eMSgZnnff6qSy2CHFZ15-7" value="negativo = true" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="670" y="590" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="eMSgZnnff6qSy2CHFZ15-16" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="eMSgZnnff6qSy2CHFZ15-9" target="eMSgZnnff6qSy2CHFZ15-7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="eMSgZnnff6qSy2CHFZ15-9" value="numero &amp;lt; 0" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="690" y="480" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="eMSgZnnff6qSy2CHFZ15-18" value="Leer numero" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" vertex="1" parent="1">
+          <mxGeometry x="850" y="590" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="eMSgZnnff6qSy2CHFZ15-22" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="eMSgZnnff6qSy2CHFZ15-9" target="eMSgZnnff6qSy2CHFZ15-18">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="890" y="550" as="sourcePoint" />
+            <mxPoint x="940" y="500" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="910" y="520" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="eMSgZnnff6qSy2CHFZ15-23" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="eMSgZnnff6qSy2CHFZ15-18">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="965" y="620" as="sourcePoint" />
+            <mxPoint x="585" y="460" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="1035" y="620" />
+              <mxPoint x="1035" y="460" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="eMSgZnnff6qSy2CHFZ15-29" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="eMSgZnnff6qSy2CHFZ15-24" target="eMSgZnnff6qSy2CHFZ15-28">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="eMSgZnnff6qSy2CHFZ15-24" value="Escribir negativo" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" vertex="1" parent="1">
+          <mxGeometry x="390" y="490" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="eMSgZnnff6qSy2CHFZ15-28" value="Fin examen_ej1" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="390" y="590" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="eMSgZnnff6qSy2CHFZ15-30" value="SI" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="510" y="490" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="eMSgZnnff6qSy2CHFZ15-31" value="SI" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="720" y="560" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="eMSgZnnff6qSy2CHFZ15-32" value="NO" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="610" y="490" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="eMSgZnnff6qSy2CHFZ15-33" value="NO" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="760" y="490" width="60" height="30" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

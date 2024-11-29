@@ -1,0 +1,21 @@
+Inicio Ejercicio2
+	int numero
+	Leer numero
+	Segun sea (numero) Hacer
+		Caso 1: 
+			Escribir "PROGRAMACION"
+		Caso 2: 
+			Escribir "ENTORNOS DE DESARROLLO"
+		Caso 3: 
+			Escribir "LENGUAJE DE MARCAS"
+		Caso 4: 
+			Escribir "SISTEMAS INFORMATICOS"
+		Caso 5: 
+			Escribir "INGLES"
+		Caso 6: 
+			Escribir "FORMACION Y ORIENTACION LABORAL"
+		Otro caso:
+			Escribir "CODIGO DE MODULO INCORRECTO"
+	Fin Segun
+Fin Ejercicio2
+	

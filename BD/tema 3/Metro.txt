@@ -9,8 +9,7 @@ Ex: Estacion, Ax: Acesso
 Ɐ Ex(Estacion(Ex) -> Ǝ Ax(Acesso(Ax) ^ Ex.codigo_estacion = Ax.codigo_estacion)
 Ex: Estacion, Cx: Compuesta
 Ɐ Ex(Estacion(Ex) - > Ǝ (Cx(Compuesto(Cx) -> Ex.codigo_estacion = Cx.codigo_estacion) 
-Ex: Estacion, Ax: Asignado
-Ɐ Ex(Estacion(Ex) - > Ǝ (Ax(Asignado(Ax) -> Ex.codigo_estacion = Ax.codigo_estacion) 
+ 
 
 Linia(codigo_linia, desripcion)
 CP{codigo_linia}
