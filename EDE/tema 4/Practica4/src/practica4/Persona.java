@@ -34,19 +34,19 @@ public class Persona {
      */
     private double altura;
     /**
-     * UMBRAL_BAJO es una constanta privada que almacena el IMC bajo 
+     * UMBRAL_BAJO es una constante privada que almacena el IMC bajo 
      * para utilizarlo en clase calculaIMC()
      * @see calcularIMC()
      */
     private final double UMBRAL_BAJO = 20;
     /**
-     * UMBRAL_BAJO es una constanta privada que almacena el IMC alto 
+     * UMBRAL_BAJO es una constante privada que almacena el IMC alto 
      * para utilizarlo en funcion calculaIMC()
      * @see calcularIMC()
      */
     private final double UMBRAL_ALTO = 25;
     /**
-     * LETRAS es una contanta privada, que almaceda todas las letras
+     * LETRAS es una contante privada, que almaceda todas las letras
      * posibles del DNI. Se utiliza en funcion generaLetraDNI()
      * @see generaLetraDNI()
      */
@@ -110,15 +110,16 @@ public class Persona {
     }
     
     /**
-     * Permite recuperar la edad de la persona
-     * <pre>Uso: nombre = miPersona.getEdad()</pre>
+     * Permite recuperar a la edad de la persona
+     * <pre>Uso: edad = miPersona.getEdad()</pre>
      * @return int Edad de la persona
      */
     public int getEdad() {
         return edad;
     }
+    
     /**
-     * Permite asignar valor al edad de la persona
+     * Permite asignar valor a la edad de la persona
      * <pre>Uso: miPersona.setEdad(19)</pre>
      * @param edad int Edad de la persona
      */
@@ -126,58 +127,128 @@ public class Persona {
         this.edad = edad;
     }
 
+    /**
+     * Permite recuperar el DNI de la persona
+     * <pre>Uso: dni = miPersona.getDNI()</pre>
+     * @return int DNI de la persona
+     */
     public int getDni() {
         return dni;
     }
 
+    /**
+     * Permite asignar valor al DNI de la persona
+     * <pre>Uso: miPersona.setDNI(87654321)</pre>
+     * @param dni int DNI de la persona
+     */
     public void setDni(int dni) {
         this.dni = dni;
     }
 
+    /**
+     * Permite recuperar la primera letra del sexo de la persona
+     * (H - homnre, M - mujer)
+     * <pre>Uso: sexo = miPersona.getSexo()</pre>
+     * @return char Sexo de la primera letra del sexo de la persona
+     */
     public char getSexo() {
         return sexo;
     }
 
+    /**
+     * Permite asignar valor al sexo de la persona
+     * <pre>Uso: miPersona.setSexo('M')</pre>
+     * @param sexo Char la primera letra del sexo de la persona
+     */
     public void setSexo(char sexo) {
         this.sexo = sexo;
     }
-
+    
+    /**
+     * Permite recuperar el peso de la persona en kg
+     * <pre>Uso: peso = miPersona.getPeso()</pre>
+     * @return double Peso en kg de la persona
+     */
     public double getPeso() {
         return peso;
     }
-
+    
+    /**
+     * Permite asignar valor al peso de la persona en kg
+     * <pre>Uso: miPersona.setPeso(55.5)</pre>
+     * @param peso double Peso en kg de la persona
+     */
     public void setPeso(double peso) {
         this.peso = peso;
     }
-
+    /**
+     * Permite recuperar la altura de la persona en metros
+     * <pre>Uso: altura = miPersona.getAltura()</pre>
+     * @return double Altura en metros de la persona
+     */
     public double getAltura() {
         return altura;
     }
-
+    
+    /**
+     * Permite asignar valor la altura de la persona en metros
+     * <pre>Uso: miPersona.setAltura(1.45)</pre>
+     * @param altura double Altura de la persona en metros
+     */
     public void setAltura(double altura) {
         this.altura = altura;
     }
 
+    /**
+     * Metodo sobreescritro que muestra los datos de la persona
+     * <pre>Uso: miPersona.toString() </pre>
+     * @return String Datos de la persona
+     */
     @Override
     public String toString() {
         return "Persona{" + "nombre=" + nombre + ", edad=" + edad + ", dni=" + dni + ", sexo=" + sexo + ", peso=" + peso + ", altura=" + altura + '}';
     }
     
+    /**
+     * Metodo que calcula el IMC de la persona. Le pasamos dos contantas como
+     * umbral alto y bajo.
+     * <pre>Uso: imc = miPersona.calcularIMC()</pre>
+     * @return int:
+     *         -1 si el IMC es menor que el umbral bajo (UMBRAL_BAJO),
+     *          0 si el IMC está entre los umbrales (inclusive),
+     *          1 si el IMC es mayor que el umbral alto (UMBRAL_ALTO).
+     * @see #UMBRAL_ALTO
+     * @see #UMBRAL_BAJO
+     */
     public int calcularIMC(){
         double imc = (this.peso / (this.altura * this.altura));
         if(imc > UMBRAL_BAJO){
             return -1; 
-        }else if(imc <= UMBRAL_BAJO){
+        }else if(imc <= UMBRAL_ALTO){
             return 0;
         }else{
             return 1;
         }
     }
-    
+    /**
+     * Metodo que verifica si la persona es mayor de edad.
+     * <pre>Uso: esMayorDeEdad = miPersona.esMayorDeEdad()</pre>
+     * @return boolean:
+     *         true si edad de la persona es mayor o igual a 18, 
+     *         false si es menor que 18.
+     * 
+     */
     public boolean esMayorDeEdad(){
         return this.edad >= 18;
     }
-        
+    
+    /**
+    * Genera la letra correspondiente al número de DNI.
+    * Usa una constante de tipo String con las letras del DNI.
+    * <pre>Uso: letraDNI = miPersona.generaLetraDNI()</pre>
+    * @return char: La letra asociada al DNI según su módulo 23.
+    * @see #LETRAS
+    */
     public char generaLetraDNI(){
         return LETRAS.charAt(this.dni%23);
     }
