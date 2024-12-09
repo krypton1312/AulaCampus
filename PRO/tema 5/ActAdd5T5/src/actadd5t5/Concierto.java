@@ -43,6 +43,6 @@ public class Concierto extends Evento{
     } 
     
     private void calculaPrecioFinal(){
-        setPrecio(getPrecio() + (getPrecio()*0.05));
+        setPrecio(getPrecio() * 1.05);
     }
 }
