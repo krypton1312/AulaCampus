@@ -1,0 +1,18 @@
+Mar: 8
+Jade: 6.5
+Sofia: 7.5
+señor Javier Ramos: 8
+Hugo: 10
+Jaume: 8
+Adrian Tebar: 9
+Rodrigo: 8.5
+Toni: 10
+Alejandro:
+Joan Simon: 7
+Alberto Bellanato: 8
+Joan Victor: 8.5
+Pablo Serrano: 10
+Adrian:8
+Victor Dominic: 8
+Jesus: 9
+
