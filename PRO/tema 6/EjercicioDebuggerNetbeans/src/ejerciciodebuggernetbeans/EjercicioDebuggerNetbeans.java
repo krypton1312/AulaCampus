@@ -33,7 +33,7 @@ public class EjercicioDebuggerNetbeans {
             suma += numeros[i]; // otro error
         }
         
-        media = suma / cantidad; // habido un error
+        media = (double)suma / cantidad; // habido un error
 
         mostrarResultados(max, min, suma, media);
         
