@@ -41,7 +41,7 @@ public class Instituto {
 
     /**
      * Permite recuperar el nombre del Instituto.
-     * <pre>Uso: miInstituto.getNombre()</pre>
+     * <pre>Uso: nombre = miInstituto.getNombre()</pre>
      *
      * @return String nombre del institulo
      */
@@ -51,7 +51,7 @@ public class Instituto {
 
     /**
      * Permite asignar valor al nombre del Instituto.
-     * <pre>Uso: miInstituto.setNombre()</pre>
+     * <pre>Uso: miInstituto.setNombre("nombre")</pre>
      *
      * @param nombre String nombre del insituto
      */
@@ -61,7 +61,7 @@ public class Instituto {
 
     /**
      * Permite recuperar la direccion del Instituto.
-     * <pre>Uso: miInstituto.getDireccion()</pre>
+     * <pre>Uso: dir = miInstituto.getDireccion()</pre>
      *
      * @return String direccion del institulo
      */
@@ -71,7 +71,7 @@ public class Instituto {
 
     /**
      * Permite asignar valor al direccion del Instituto.
-     * <pre>Uso: miInstituto.setDireccion()</pre>
+     * <pre>Uso: miInstituto.setDireccion("direccion")</pre>
      *
      * @param direccion String direccion del insituto
      */
@@ -81,7 +81,7 @@ public class Instituto {
 
     /**
      * Permite recuperar la cantidad de alumnos matriculados del Instituto.
-     * <pre>Uso: miInstituto.getAlumnosMatriculados()</pre>
+     * <pre>Uso: alumnos = miInstituto.getAlumnosMatriculados()</pre>
      *
      * @return int la cantidad de alumnos matriculados del instituto
      */
@@ -91,7 +91,7 @@ public class Instituto {
 
     /**
      * Permite asignar valor a la cantidad de alumnos matriculados del Instituto.
-     * <pre>Uso: miInstituto.setDireccion()</pre>
+     * <pre>Uso: miInstituto.setDireccion(123)</pre>
      *
      * @param alumnosMatriculados int cantidad de alumnos matriculados del insituto
      */
