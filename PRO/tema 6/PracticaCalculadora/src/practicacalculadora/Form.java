@@ -1,6 +1,7 @@
 package practicacalculadora;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.event.*;
 import javax.swing.*;
 
@@ -14,15 +15,14 @@ public class Form extends JFrame implements ActionListener, MouseListener{
     JButton salirB;
     public Form(){
         this.setTitle("Calculadora");
-        this.setSize(656, 350);
-        this.setResizable(false);
-        this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-        
+        this.setResizable(false);
+
         panel = new JPanel();
         panel.setLayout(null);
         panel.setBackground(Color.GRAY);
-        this.add(panel);
+        panel.setPreferredSize(new Dimension(650, 350)); // Устанавливаем точные размеры панели
+        this.add(panel);;
         
         resultL = new JLabel("Resultado");
         resultL.setBounds(10, 30, 630, 40);
@@ -89,21 +89,16 @@ public class Form extends JFrame implements ActionListener, MouseListener{
         salirB.setFocusable(false);
         salirB.addActionListener(this);
         panel.add(salirB);
+        
+        // Устанавливаем размер окна на основе панели
+        this.pack();
+        this.setLocationRelativeTo(null); // Центрируем окно
     }
     
     @Override
     public void actionPerformed(ActionEvent e){
-        if(e.getSource() == actionB[0]){
-            actionB[0].setEnabled(false);
-        }
-        if(e.getSource() == actionB[1]){
-            actionB[1].setEnabled(false);
-        }
-        if(e.getSource() == actionB[2]){
-            actionB[2].setEnabled(false);
-        }
-        if(e.getSource() == actionB[3]){
-            actionB[3].setEnabled(false);
+        for (JButton button : actionB) {
+            button.setEnabled(button != e.getSource());
         }
         
         if(e.getSource() == calcularB){
@@ -174,5 +169,10 @@ public class Form extends JFrame implements ActionListener, MouseListener{
             }
         }
         return "";
+    }
+
+    public void getPanelSize(){
+        System.out.println(this.getSize());
+        System.out.println(panel.getSize());
     }
 }
