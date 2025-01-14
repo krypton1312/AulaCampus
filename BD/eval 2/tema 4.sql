@@ -30,6 +30,7 @@ SELECT last_name,
 FROM employees;
 
 // 5
+
 SELECT job_id, 
         DECODE(job_id, 'AD_PRES','A', 
         'ST_MAN','B',
@@ -37,8 +38,9 @@ SELECT job_id,
         'SA_REP','D',
         'ST_CLERK','E',
         job_id, 0) 
-        as comm 
+        as grade 
 FROM employees;
+
 
 // 6
 SELECT job_id, 
@@ -50,5 +52,5 @@ SELECT job_id,
         WHEN 'ST_CLERK' THEN 'E'
         ELSE '0'
         END
-        as comm 
+        as grade 
 FROM employees;
