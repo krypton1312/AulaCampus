@@ -22,7 +22,7 @@ public class Form extends JFrame implements ActionListener, MouseListener{
         panel.setLayout(null);
         panel.setBackground(Color.GRAY);
         panel.setPreferredSize(new Dimension(650, 350)); // Устанавливаем точные размеры панели
-        this.add(panel);;
+        this.add(panel);
         
         resultL = new JLabel("Resultado");
         resultL.setBounds(10, 30, 630, 40);
@@ -97,8 +97,29 @@ public class Form extends JFrame implements ActionListener, MouseListener{
     
     @Override
     public void actionPerformed(ActionEvent e){
-        for (JButton button : actionB) {
-            button.setEnabled(button != e.getSource());
+        if(e.getSource() == actionB[0]){
+            for (JButton actionB1 : actionB) {
+                actionB1.setEnabled(true);
+            }
+            actionB[0].setEnabled(false);
+        }
+        if(e.getSource() == actionB[1]){
+            for (JButton actionB1 : actionB) {
+                actionB1.setEnabled(true);
+            }
+            actionB[1].setEnabled(false);
+        }
+        if(e.getSource() == actionB[2]){
+            for (JButton actionB1 : actionB) {
+                actionB1.setEnabled(true);
+            }
+            actionB[2].setEnabled(false);
+        }
+        if(e.getSource() == actionB[3]){
+            for (JButton actionB1 : actionB) {
+                actionB1.setEnabled(true);
+            }
+            actionB[3].setEnabled(false);
         }
         
         if(e.getSource() == calcularB){
