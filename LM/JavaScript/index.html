@@ -8,10 +8,28 @@
             .verde{
                 color:green;
             }
+            .caja{
+                width: 300px;
+                height: 50px;
+                border: 1px solid black;
+            }
+            .button{
+                width: 150px;
+                height: 50px;
+                border: 1px solid black;
+            }
         </style>
     </head>
     <body>
-        <h1 id="titulo">titulo</h1>
+
+
+        <div class="caja" id="caja" onchange="changetext()"></div>
+
+        <input type="text" id="input" onchange="EscribeTexto()"></input>
+        <h1 id = "h1"> </h1>
+
+        <button id="boton" onmouseover="Mover()">VA PULSA</button>
+        <button id="boton1" class = "button" onclick="changeColor()">cambiar color</button>
         <script src="script.js"></script>
     </body>
 </html>
