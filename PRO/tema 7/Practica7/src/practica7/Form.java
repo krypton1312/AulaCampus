@@ -13,6 +13,7 @@ import static javax.swing.JFrame.EXIT_ON_CLOSE;
 import javax.swing.table.DefaultTableModel;
 
 public class Form extends JFrame implements ActionListener {
+
     File dataFile = new File("data.txt");
     Vehiculo veh;
     JPanel panel;
@@ -97,7 +98,7 @@ public class Form extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == getDataB) {
             String currentTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm"));
-            transformData(inputDataTF.getText()+ "," + currentTime);
+            transformData(inputDataTF.getText() + "," + currentTime);
             try {
                 setDataToFile();
             } catch (IOException ex) {
