@@ -14,7 +14,6 @@ public class EjemploMySQL {
         int codpelicula = sc.nextInt();
         sc.nextLine();
         ResultSet registros = sentencia.executeQuery("SELECT * FROM peliculas WHERE codpelicula =" + codpelicula);
-        
         if(registros.next()){
             while(registros.next()){
                 String titulo = registros.getString("titulo");
