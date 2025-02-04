@@ -5,6 +5,11 @@ import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
@@ -18,12 +23,17 @@ public class MainForm extends JFrame implements ActionListener{
     JButton addB;
     JButton delB;
     JComboBox<String> selectTableCB;
-    JButton closeB;
+    JButton closeB;    
+    Connection con;
+    Statement stat;
     
-    public MainForm() {
+    public MainForm() throws SQLException {
         this.setTitle("CS2 Equipment List");
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setResizable(false);
+        
+        con = DriverManager.getConnection("jdbc:mysql://localhost:3306/cs2_bd", "root","");
+        stat = con.createStatement();
         
         panel = new JPanel();
         panel.setLayout(null);
@@ -87,5 +97,26 @@ public class MainForm extends JFrame implements ActionListener{
         this.setVisible(true);
     }
     @Override
-    public void actionPerformed(ActionEvent e) {}
+    public void actionPerformed(ActionEvent e) {
+        if(closeB == e.getSource()){
+            System.exit(0);
+        }   
+    }
+    public void showWeapons() throws SQLException{
+        ResultSet register = stat.executeQuery("SELECT * FROM weapons");
+        if(register.next()){
+            while(register.next()){
+                String name = register.getString("name");
+                String type = register.getString("type");
+                int price = register.getInt("price");
+                int damage = register.getInt("damage");
+                double armor = register.getDouble("armor_penetration");
+                double fire_rate = register.getDouble("fire_rate");
+                int magazine = register.getInt("magazine_size");
+                Object[] dataM = {name,type, price, damage, armor, fire_rate, magazine};
+                model.addRow(dataM);
+            }
+        }
+        con.close();
+    }
 }
