@@ -159,25 +159,39 @@ public class MainForm extends JFrame implements ActionListener{
         ResultSet register = stat.executeQuery("SELECT * FROM gear");
         if(register.next()){
             do{
-                Object[] dataGear ={register.getString("name"), register.getString("type"), register.getString("price"), "-", "-", "-", "-", "-", "-", register.getString("armor_value"), register.getBoolean("has_helmet"), register.getInt("defuse_time")};
+                Object[] dataGear ={register.getString("name"), register.getString("type"), register.getString("price"), "-", "-", "-", "-", "-",register.getString("armor_value"), register.getBoolean("has_helmet"), register.getInt("defuse_time")};
                 model.addRow(dataGear);
             }while(register.next());
         }
     }
     private void delSelectedItem(int item) throws SQLException {
-        String tableName = "";
+        if (item < 0) {  
+            JOptionPane.showMessageDialog(this, "Please select an item to delete.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        String tableName = null;
 
         if (model.getValueAt(item, 3).equals("-") && model.getValueAt(item, 9).equals("-")) {
             tableName = "grenades";
-        } else if (model.getValueAt(item, 8).equals("-") && model.getValueAt(item, 9).equals("-")) {
+        } else if (model.getValueAt(item, 7).equals("-") && model.getValueAt(item, 9).equals("-")) {
             tableName = "weapons";
-        } else if (model.getValueAt(item, 3).equals("-") && model.getValueAt(item, 8).equals("-")) {
+        } else if (model.getValueAt(item, 3).equals("-") && model.getValueAt(item, 7).equals("-")) {
             tableName = "gear";
         }
-        PreparedStatement delRow = con.prepareStatement("DELETE FROM " + tableName + " WHERE name LIKE ?");
-        delRow.setString(1, (String) model.getValueAt(item, 0));
-        delRow.executeUpdate();
+
+        if (tableName == null) {
+            JOptionPane.showMessageDialog(this, "Could not determine the table for deletion.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        String sql = "DELETE FROM " + tableName + " WHERE name = ?";
+        try (PreparedStatement delRow = con.prepareStatement(sql)) {
+            delRow.setString(1, (String) model.getValueAt(item, 0));
+            delRow.executeUpdate();
+        }
 
         model.removeRow(item);
     }
+
 }
