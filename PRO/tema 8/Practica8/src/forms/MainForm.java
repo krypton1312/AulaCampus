@@ -16,7 +16,8 @@ import java.util.logging.Logger;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
-public class MainForm extends JFrame implements ActionListener{
+public class MainForm extends JFrame implements ActionListener {
+
     JPanel panel;
     JTable table;
     DefaultTableModel model;
@@ -26,52 +27,52 @@ public class MainForm extends JFrame implements ActionListener{
     JButton addB;
     JButton delB;
     JComboBox<String> selectTableCB;
-    JButton closeB;    
+    JButton closeB;
     Connection con;
     Statement stat;
     InputForm input = new InputForm();
-    
+
     public MainForm() throws SQLException {
         this.setTitle("CS2 Equipment List");
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setResizable(false);
-        
-        con = DriverManager.getConnection("jdbc:mysql://localhost:3306/cs2_db", "root","");
+
+        con = DriverManager.getConnection("jdbc:mysql://localhost:3306/cs2_db", "root", "");
         stat = con.createStatement();
-        
+
         panel = new JPanel();
         panel.setLayout(null);
         panel.setBackground(Color.GRAY);
-        panel.setPreferredSize(new Dimension(1250,500));
+        panel.setPreferredSize(new Dimension(1250, 500));
         this.add(panel);
-        
+
         header = new String[]{"Name", "Type", "Price", "Damage", "Armor penetration", "Fire rate", "Magazine size", "Effect", "Armor value", "Has helmet", "Defuse time"};
         data = new Object[0][7];
-        
+
         model = new DefaultTableModel(data, header);
         showWeapons();
         table = new JTable(model);
         table.setBackground(Color.WHITE);
         table.setGridColor(Color.BLACK);
         scroll = new JScrollPane(table);
-        scroll.setBounds(10,10, 1000, 480);
+        scroll.setBounds(10, 10, 1000, 480);
         scroll.getViewport().setBackground(Color.WHITE);
         panel.add(scroll);
-        
+
         addB = new JButton("Add");
         addB.addActionListener(this);
         addB.setBounds(1020, 10, 220, 40);
         addB.setBackground(Color.WHITE);
         addB.setFocusable(false);
         panel.add(addB);
-        
+
         delB = new JButton("Delete");
         delB.addActionListener(this);
         delB.setBounds(1020, 60, 220, 40);
         delB.setBackground(Color.WHITE);
         delB.setFocusable(false);
         panel.add(delB);
-        
+
         String[] options = {"All", "Weapons", "Granades", "Gear"};
         selectTableCB = new JComboBox<>(options);
         selectTableCB.setBounds(1020, 110, 220, 40);
@@ -89,21 +90,30 @@ public class MainForm extends JFrame implements ActionListener{
             }
         });
         panel.add(selectTableCB);
-        
+
         closeB = new JButton("Close");
         closeB.addActionListener(this);
         closeB.setBounds(720, 160, 220, 40);
         closeB.setBackground(Color.WHITE);
         closeB.setFocusable(false);
         panel.add(closeB);
-        
+
+        input.addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+                System.out.println("InputForm was closed!");
+                showUpdateTable();
+            }
+        });
+
         this.pack();
         this.setLocationRelativeTo(null);
         this.setVisible(true);
     }
+
     @Override
     public void actionPerformed(ActionEvent e) {
-        if(closeB == e.getSource()){
+        if (closeB == e.getSource()) {
             System.exit(0);
             try {
                 con.close();
@@ -111,61 +121,54 @@ public class MainForm extends JFrame implements ActionListener{
                 Logger.getLogger(MainForm.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        if(selectTableCB == e.getSource()){
-            model.setRowCount(0);
-            try {
-                switch (selectTableCB.getSelectedIndex()) {
-                    case 0 : showWeapons(); showGrenades(); showGear(); break;
-                    case 1 : showWeapons(); break;
-                    case 2 : showGrenades(); break;
-                    case 3 : showGear(); break;
-            }
-            } catch (SQLException ex) {
-                Logger.getLogger(MainForm.class.getName()).log(Level.SEVERE, "Error", ex);
-            }
+        if (selectTableCB == e.getSource()) {
+            showUpdateTable();
         }
-        if(delB == e.getSource()){
+        if (delB == e.getSource()) {
             try {
                 delSelectedItem(table.getSelectedRow());
             } catch (SQLException ex) {
                 Logger.getLogger(MainForm.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        if(addB == e.getSource()){
+        if (addB == e.getSource()) {
             input.setVisible(true);
         }
     }
-    
-    private void showWeapons() throws SQLException{
+
+    private void showWeapons() throws SQLException {
         ResultSet register = stat.executeQuery("SELECT * FROM weapons");
-        if(register.next()){
-            do{
-                Object[] dataW = {register.getString("name"),register.getString("type"), register.getInt("price"), 
+        if (register.next()) {
+            do {
+                Object[] dataW = {register.getString("name"), register.getString("type"), register.getInt("price"),
                     register.getInt("damage"), register.getDouble("armor_penetration"), register.getDouble("fire_rate"), register.getInt("magazine_size"), "-", "-", "-", "-"};
                 model.addRow(dataW);
-            }while(register.next());
+            } while (register.next());
         }
     }
-    private void showGrenades() throws SQLException{
+
+    private void showGrenades() throws SQLException {
         ResultSet register = stat.executeQuery("SELECT * FROM grenades");
-        if(register.next()){
-            do{
-                Object[] dataG ={register.getString("name"), "Granade", register.getString("price"), "-", "-", "-", "-", register.getString("effect"), "-", "-", "-", "-"};
+        if (register.next()) {
+            do {
+                Object[] dataG = {register.getString("name"), "Granade", register.getString("price"), "-", "-", "-", "-", register.getString("effect"), "-", "-", "-", "-"};
                 model.addRow(dataG);
-            }while(register.next());
+            } while (register.next());
         }
     }
-    private void showGear() throws SQLException{
+
+    private void showGear() throws SQLException {
         ResultSet register = stat.executeQuery("SELECT * FROM gear");
-        if(register.next()){
-            do{
-                Object[] dataGear ={register.getString("name"), register.getString("type"), register.getString("price"), "-", "-", "-", "-", "-",register.getString("armor_value"), register.getBoolean("has_helmet"), register.getInt("defuse_time")};
+        if (register.next()) {
+            do {
+                Object[] dataGear = {register.getString("name"), register.getString("type"), register.getString("price"), "-", "-", "-", "-", "-", register.getString("armor_value"), register.getBoolean("has_helmet"), register.getInt("defuse_time")};
                 model.addRow(dataGear);
-            }while(register.next());
+            } while (register.next());
         }
     }
+
     private void delSelectedItem(int item) throws SQLException {
-        if (item < 0) {  
+        if (item < 0) {
             JOptionPane.showMessageDialog(this, "Please select an item to delete.", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
@@ -192,6 +195,30 @@ public class MainForm extends JFrame implements ActionListener{
         }
 
         model.removeRow(item);
+    }
+
+    public void showUpdateTable() {
+        model.setRowCount(0);
+        try {
+            switch (selectTableCB.getSelectedIndex()) {
+                case 0:
+                    showWeapons();
+                    showGrenades();
+                    showGear();
+                    break;
+                case 1:
+                    showWeapons();
+                    break;
+                case 2:
+                    showGrenades();
+                    break;
+                case 3:
+                    showGear();
+                    break;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(MainForm.class.getName()).log(Level.SEVERE, "Error", ex);
+        }
     }
 
 }

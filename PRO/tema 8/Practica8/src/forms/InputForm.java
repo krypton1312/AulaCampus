@@ -1,11 +1,21 @@
 package forms;
 
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.event.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.stream.Stream;
 import javax.swing.*;
-// "Name", "Type", "Price", "Damage", "Armor penetration", "Fire rate", "Magazine size", "Effect", "Armor value", "Has helmet", "Defuse time"
-public class InputForm extends JFrame implements ActionListener{
+
+public class InputForm extends JFrame implements ActionListener {
+
     protected static String[] datos;
     JPanel panel;
     JLabel nameT;
@@ -29,22 +39,24 @@ public class InputForm extends JFrame implements ActionListener{
     JTextField magazineTF;
     JTextField effectTF;
     JTextField armorValueTF;
-    JTextField helmetTF;
+    JComboBox helmetTF;
     JTextField defuseTF;
     JComboBox categoryCB;
+    PreparedStatement insertData;
     JButton inputB;
+    Connection con;
 
-    
-    public InputForm(){
+    public InputForm() throws SQLException {
+        con = DriverManager.getConnection("jdbc:mysql://localhost:3306/cs2_db", "root","");
         this.setTitle("Input new item");
         this.setResizable(false);
-        
+
         panel = new JPanel();
         panel.setLayout(null);
         panel.setBackground(Color.GRAY);
-        panel.setPreferredSize(new Dimension(620,350));
+        panel.setPreferredSize(new Dimension(620, 350));
         this.add(panel);
-        
+
         int labelX1 = 30, fieldX1 = 160, labelX2 = 340, fieldX2 = 470;
         int y = 30, width = 120, height = 25, gap = 40;
 
@@ -58,8 +70,9 @@ public class InputForm extends JFrame implements ActionListener{
         categoryCB.setBounds(fieldX1, y, width, height);
         categoryCB.setBackground(Color.WHITE);
         categoryCB.setFocusable(false);
+        categoryCB.addActionListener(this);
         panel.add(categoryCB);
-
+        
         nameT = new JLabel("Name:");
         nameT.setBounds(labelX2, y, width, height);
         nameT.setOpaque(true);
@@ -175,9 +188,10 @@ public class InputForm extends JFrame implements ActionListener{
         helmet.setBackground(Color.WHITE);
         panel.add(helmet);
 
-        helmetTF = new JTextField();
+        helmetTF = new JComboBox<>(new String[]{"true", "false"});
         helmetTF.setBounds(fieldX1, y, width, height);
         helmetTF.setBackground(Color.WHITE);
+        helmetTF.setFocusable(false);
         panel.add(helmetTF);
 
         defuseT = new JLabel("Defuse Time:");
@@ -197,13 +211,106 @@ public class InputForm extends JFrame implements ActionListener{
         inputB.setFocusable(false);
         inputB.addActionListener(this);
         panel.add(inputB);
-        
+
         this.pack();
         this.setLocationRelativeTo(null);
+        selectedItem();
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if (categoryCB == e.getSource()) {
+            try {
+                selectedItem();
+            } catch (SQLException ex) {
+                Logger.getLogger(InputForm.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        if (inputB == e.getSource()){
+            try {
+                insertToDataBase();
+            } catch (SQLException ex) {
+                Logger.getLogger(InputForm.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            this.dispatchEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
+            this.dispose();
+        }
+    }
+
+    public void selectedItem() throws SQLException {
+        Component[] components = panel.getComponents();
+
+        for (Component comp : components) {
+            if (comp instanceof JTextField) {
+                comp.setEnabled(true);
+                comp.setBackground(Color.WHITE);
+            }
+        }
+        switch (categoryCB.getSelectedIndex()) {
+            case 0:
+                Stream.of(effectTF, armorValueTF, helmetTF, defuseTF)
+                        .forEach(tf -> {
+                            tf.setEnabled(false);
+                            tf.setBackground(Color.LIGHT_GRAY);
+                        });
+                break;
+            case 1:
+                Stream.of(damageTF, armorPenTF, fireTF, magazineTF, armorValueTF, helmetTF, defuseTF)
+                        .forEach(tf -> {
+                            tf.setEnabled(false);
+                            tf.setBackground(Color.LIGHT_GRAY);
+                        });
+                break;
+            case 2:
+                Stream.of(damageTF, armorPenTF, fireTF, magazineTF, effectTF)
+                        .forEach(tf -> {
+                            tf.setEnabled(false);
+                            tf.setBackground(Color.LIGHT_GRAY);
+                        });
+                helmetTF.setEnabled(true);
+                helmetTF.setBackground(Color.WHITE);
+                break;
+
+        }
     }
     
-    @Override
-    public void actionPerformed(ActionEvent e){
+    public void insertToDataBase() throws SQLException{
+        String sql;
+        String table = (String)categoryCB.getSelectedItem();
+        switch(categoryCB.getSelectedIndex()){
+            case 0:
+                sql = "INSERT INTO " + table.toLowerCase() + "(name, type, price, damage, armor_penetration, fire_rate, magazine_size) VALUES(?,?,?,?,?,?,?);";
+                insertData = con.prepareStatement(sql);
+                insertData.setString(1, nameTF.getText());
+                insertData.setString(2, typeTF.getText());
+                insertData.setInt(3,Integer.parseInt(priceTF.getText()));
+                insertData.setInt(4,Integer.parseInt(damageTF.getText()));
+                insertData.setInt(5,Integer.parseInt(armorPenTF.getText()));
+                insertData.setInt(6,Integer.parseInt(fireTF.getText()));
+                insertData.setInt(7,Integer.parseInt(magazineTF.getText()));
+                insertData.executeUpdate();
+                break;
+            case 1:
+                sql = "INSERT INTO " + table.toLowerCase() + "(name, effect, price) VALUES(?,?,?);";
+                insertData = con.prepareStatement(sql);
+                insertData.setString(1, nameTF.getText());
+                insertData.setString(2, effectTF.getText());
+                insertData.setInt(3,Integer.parseInt(priceTF.getText()));
+                System.out.println(sql);
+                insertData.executeUpdate();
+                break;
+            case 2:
+                sql = "INSERT INTO " + table.toLowerCase() + "(name, type, price, armor_value, has_helmet, defuse_time) VALUES(?,?,?,?,?,?);";
+                insertData = con.prepareStatement(sql);
+                insertData.setString(1, nameTF.getText());
+                insertData.setString(2, typeTF.getText());
+                insertData.setInt(3,Integer.parseInt(priceTF.getText()));
+                insertData.setInt(4,Integer.parseInt(armorValueTF.getText()));
+                insertData.setBoolean(5, Boolean.parseBoolean((String)helmetTF.getSelectedItem()));
+                insertData.setInt(6,Integer.parseInt(defuseTF.getText()));
+                insertData.executeUpdate();
+                break;
+        }
         
     }
 }
