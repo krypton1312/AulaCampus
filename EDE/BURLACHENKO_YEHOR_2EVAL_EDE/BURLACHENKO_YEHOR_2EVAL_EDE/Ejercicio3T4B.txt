@@ -1,0 +1,36 @@
+1. git config --global user.name "YEHRORBURLACHENKO"
+   git config --global user.mail "yebur@campusaula.com"
+
+2. cd C:\Users\YEHORBURLACHENKO\Desktop\ejercicio3ExT4
+
+3. git init ejercicio3ExT4
+
+4. git status
+
+5. echo "manzana, platano, mandarina" > frutas.txt
+
+6. ls
+
+7. git add .
+
+8. git commit -m "Listado frutas"
+
+9. echo "pina, melocoton" >> frutas.txt
+
+10. git diff
+
+11. git diff 6e36ee7654054094a3178ad8fe5534eaafe0db3b
+
+12. git diff 6e36ee7654054094a3178ad8fe5534eaafe0db3b
+
+13. git log
+
+14. git add .
+
+15. git commit -m "Listado de frutas actualizado"
+
+16. git log --oneline --graph
+
+17. git commit --amend -m "Listado de frutas Final"
+
+18. git reset --hard 6e36ee7654054094a3178ad8fe5534eaafe0db3b
