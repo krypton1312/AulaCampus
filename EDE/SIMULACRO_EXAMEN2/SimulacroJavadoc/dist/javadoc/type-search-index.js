@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"simulacrojavadoc","l":"Pais"},{"p":"simulacrojavadoc","l":"SimulacroJavadoc"}];updateSearchResults();
