@@ -32,13 +32,13 @@ public class MainForm extends JFrame implements ActionListener {
     JComboBox<String> selectTableCB;
     JButton closeB;
     ObjectContainer gearDataBase;
-    ObjectContainer weapons;
-    ObjectContainer grenades;
-    // НУЖНО ПОМЕНЯТЬ НАЗВАНИЯ БАЗ ДАННЫХ
-    public MainForm(ObjectContainer gearDataBase, ObjectContainer weapons, ObjectContainer grenades){
+    ObjectContainer weaponDataBase;
+    ObjectContainer grenadeDataBase;
+    
+    public MainForm(ObjectContainer gearDataBase, ObjectContainer weaponDataBase, ObjectContainer grenadeDataBase){
         this.gearDataBase = gearDataBase;
-        this.weapons = weapons;
-        this.grenades = grenades;
+        this.weaponDataBase = weaponDataBase;
+        this.grenadeDataBase = grenadeDataBase;
         this.setTitle("CS2 Equipment List");
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setResizable(false);
@@ -53,7 +53,7 @@ public class MainForm extends JFrame implements ActionListener {
         data = new Object[0][7];
 
         model = new DefaultTableModel(data, header);
-        showGear(gearDataBase);
+        showWeapons(weaponDataBase);
         table = new JTable(model);
         table.setBackground(Color.WHITE);
         table.setGridColor(Color.BLACK);
@@ -76,7 +76,7 @@ public class MainForm extends JFrame implements ActionListener {
         delB.setFocusable(false);
         panel.add(delB);
 
-        String[] options = {"All", "Weapons", "Granades", "Gear"};
+        String[] options = {"All", "Weapons", "Grenades", "Gear"};
         selectTableCB = new JComboBox<>(options);
         selectTableCB.setBounds(1020, 110, 220, 40);
         selectTableCB.setSelectedIndex(1);
@@ -104,15 +104,33 @@ public class MainForm extends JFrame implements ActionListener {
 
         this.pack();
         this.setLocationRelativeTo(null);
-        this.setVisible(true);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        if(e.getSource() == selectTableCB){
+            model.setRowCount(0);
+            switch (selectTableCB.getSelectedIndex()) {
+                case 0:
+                    showWeapons(weaponDataBase);
+                    showGrenades(grenadeDataBase);
+                    showGear(gearDataBase);
+                    break;
+                case 1:
+                    showWeapons(weaponDataBase);
+                    break;
+                case 2:
+                    showGrenades(grenadeDataBase);
+                    break;
+                case 3: 
+                    showGear(gearDataBase);
+                    break;
+            }
+        }
     }
     
-    private void showWeapons(ObjectContainer weapons) {
-        ObjectSet weaponR = weapons.queryByExample(new Weapon(null, null, 0, 0, 0, 0, 0));
+    private void showWeapons(ObjectContainer weaponDataBase) {
+        ObjectSet weaponR = weaponDataBase.queryByExample(new Weapon(null, null, 0, 0, 0, 0, 0));
         while (weaponR.hasNext()) {
             Weapon weapon = (Weapon) weaponR.next();
             Object[] dataW = {
@@ -124,10 +142,10 @@ public class MainForm extends JFrame implements ActionListener {
         }
     }
     
-    private void showGrenades(ObjectContainer grenades){
-        ObjectSet grenadesR = grenades.queryByExample(new Grenade(null, null, 0, null));
-        while(grenadesR.hasNext()){
-            Grenade grenade = (Grenade) grenadesR.next();
+    private void showGrenades(ObjectContainer grenadeDataBase){
+        ObjectSet grenadeDataBaseR = grenadeDataBase.queryByExample(new Grenade(null, null, 0, null));
+        while(grenadeDataBaseR.hasNext()){
+            Grenade grenade = (Grenade) grenadeDataBaseR.next();
             Object[] dataG = {
                 grenade.getName(), grenade.getType(), grenade.getPrice(), 
                 "-", "-", "-", "-", grenade.getEffect(), "-", "-", "-", "-"};
@@ -143,14 +161,4 @@ public class MainForm extends JFrame implements ActionListener {
             model.addRow(dataGear);
         }
     }
-  /*  
-    private void showGear() {
-        ResultSet register = stat.executeQuery("SELECT * FROM gear");
-        if (register.next()) {
-            do {
-                Object[] dataGear = {register.getString("name"), register.getString("type"), register.getString("price"), "-", "-", "-", "-", "-", register.getString("armor_value"), register.getBoolean("has_helmet"), register.getInt("defuse_time")};
-                model.addRow(dataGear);
-            } while (register.next());
-        }
-    } */
 }
