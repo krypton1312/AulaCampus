@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="Act1">
+  <ClassDiagramComponents>
+    <Class name="Pais" package="" visibility="public" xPosition="273.0" yPosition="161.0">
+      <Fields>
+        <Field name="nombre" type="String" visibility="private"/>
+        <Field name="capital" type="String" visibility="private"/>
+        <Field name="habitantes" type="int" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="mostrarPais" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations/>
+</ClassDiagram>

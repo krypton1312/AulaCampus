@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="Act2">
+  <ClassDiagramComponents>
+    <Class name="Consumo" package="" visibility="public" xPosition="226.0" yPosition="206.0">
+      <Fields>
+        <Field name="kilometros" type="double" visibility="private"/>
+        <Field name="litros" type="double" visibility="private"/>
+        <Field name="litrosConsumido" type="double" visibility="private"/>
+        <Field name="vmed" type="double" visibility="private"/>
+        <Field name="pgas" type="double" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="getTiempo" returnType="String" visibility="public"/>
+        <Method name="consumoMedio" returnType="double" visibility="public"/>
+        <Method name="consumiEuros" returnType="double" visibility="public"/>
+        <Method name="setKms" returnType="void" visibility="public">
+          <Argument type="double" name="kms"/>
+        </Method>
+        <Method name="setLitros" returnType="void" visibility="public">
+          <Argument type="double" name="litros"/>
+        </Method>
+        <Method name="setVmed" returnType="void" visibility="public">
+          <Argument type="double" name="vmed"/>
+        </Method>
+        <Method name="setPgas" returnType="void" visibility="public">
+          <Argument type="double" name="pgas"/>
+        </Method>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations/>
+</ClassDiagram>

@@ -2,10 +2,10 @@ package objects;
 public class Account {
     private String login;
     private String password;
-    private boolean admin;
-    private boolean superAdmin;
+    private Boolean admin;
+    private Boolean superAdmin;
 
-    public Account(String login, String password, boolean admin, boolean superAdmin) {
+    public Account(String login, String password, Boolean admin, Boolean superAdmin) {
         this.login = login;
         this.password = password;
         this.admin = admin;
@@ -28,19 +28,19 @@ public class Account {
         this.password = password;
     }
 
-    public boolean isAdmin() {
+    public Boolean isAdmin() {
         return admin;
     }
 
-    public void setAdmin(boolean admin) {
+    public void setAdmin(Boolean admin) {
         this.admin = admin;
     }
 
-    public boolean isSuperAdmin() {
+    public Boolean isSuperAdmin() {
         return superAdmin;
     }
 
-    public void setSuperAdmin(boolean superAdmin) {
+    public void setSuperAdmin(Boolean superAdmin) {
         this.superAdmin = superAdmin;
     }
 

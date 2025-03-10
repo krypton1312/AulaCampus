@@ -7,12 +7,15 @@ import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import javax.swing.DefaultListCellRenderer;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -20,25 +23,28 @@ import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableModel;
 import objects.*;
 
-public class MainForm extends JFrame implements ActionListener {
-    JPanel panel;
-    JTable table;
-    DefaultTableModel model;
-    JScrollPane scroll;
-    String[] header;
-    Object[][] data;
-    JButton addB;
-    JButton delB;
-    JComboBox<String> selectTableCB;
-    JButton closeB;
-    ObjectContainer gearDataBase;
-    ObjectContainer weaponDataBase;
-    ObjectContainer grenadeDataBase;
+public class MainForm extends JFrame implements ActionListener, MouseListener {
+    private JPanel panel;
+    private JTable table;
+    private DefaultTableModel model;
+    private JScrollPane scroll;
+    private String[] header;
+    private Object[][] data;
+    private JButton addB;
+    private JButton delB;
+    private JComboBox<String> selectTableCB;
+    private JButton closeB;
+    private ObjectContainer gearDataBase;
+    private ObjectContainer weaponDataBase;
+    private ObjectContainer grenadeDataBase;
+    private InputForm inputForm;
     
-    public MainForm(ObjectContainer gearDataBase, ObjectContainer weaponDataBase, ObjectContainer grenadeDataBase){
+    
+    public MainForm(ObjectContainer gearDataBase, ObjectContainer weaponDataBase, ObjectContainer grenadeDataBase, Account selectedAccount){
         this.gearDataBase = gearDataBase;
         this.weaponDataBase = weaponDataBase;
         this.grenadeDataBase = grenadeDataBase;
+        this.inputForm = new InputForm(gearDataBase, weaponDataBase, grenadeDataBase);
         this.setTitle("CS2 Equipment List");
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setResizable(false);
@@ -54,31 +60,37 @@ public class MainForm extends JFrame implements ActionListener {
 
         model = new DefaultTableModel(data, header);
         showWeapons(weaponDataBase);
-        table = new JTable(model);
+        table = new JTable(model) {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
+        table.addMouseListener(this);
         table.setBackground(Color.WHITE);
         table.setGridColor(Color.BLACK);
         scroll = new JScrollPane(table);
         scroll.setBounds(10, 10, 1000, 480);
         scroll.getViewport().setBackground(Color.WHITE);
         panel.add(scroll);
+        if(selectedAccount.isAdmin()|| selectedAccount.isSuperAdmin()){
+            addB = new JButton("Add");
+            addB.addActionListener(this);
+            addB.setBounds(1020, 60, 220, 40);
+            addB.setBackground(Color.WHITE);
+            addB.setFocusable(false);
+            panel.add(addB);
 
-        addB = new JButton("Add");
-        addB.addActionListener(this);
-        addB.setBounds(1020, 10, 220, 40);
-        addB.setBackground(Color.WHITE);
-        addB.setFocusable(false);
-        panel.add(addB);
-
-        delB = new JButton("Delete");
-        delB.addActionListener(this);
-        delB.setBounds(1020, 60, 220, 40);
-        delB.setBackground(Color.WHITE);
-        delB.setFocusable(false);
-        panel.add(delB);
-
+            delB = new JButton("Delete");
+            delB.addActionListener(this);
+            delB.setBounds(1020, 110, 220, 40);
+            delB.setBackground(Color.WHITE);
+            delB.setFocusable(false);
+            panel.add(delB);
+        }
         String[] options = {"All", "Weapons", "Grenades", "Gear"};
         selectTableCB = new JComboBox<>(options);
-        selectTableCB.setBounds(1020, 110, 220, 40);
+        selectTableCB.setBounds(1020, 10, 220, 40);
         selectTableCB.setSelectedIndex(1);
         selectTableCB.setBackground(Color.WHITE);
         selectTableCB.setFocusable(false);
@@ -100,8 +112,16 @@ public class MainForm extends JFrame implements ActionListener {
         closeB.setBackground(Color.WHITE);
         closeB.setFocusable(false);
         panel.add(closeB);
-
-
+        
+        inputForm.addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+                System.out.println("InputForm was closed!");
+                showUpdateTable();
+            }
+        });
+        
+        this.setVisible(true);
         this.pack();
         this.setLocationRelativeTo(null);
     }
@@ -109,23 +129,13 @@ public class MainForm extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == selectTableCB){
-            model.setRowCount(0);
-            switch (selectTableCB.getSelectedIndex()) {
-                case 0:
-                    showWeapons(weaponDataBase);
-                    showGrenades(grenadeDataBase);
-                    showGear(gearDataBase);
-                    break;
-                case 1:
-                    showWeapons(weaponDataBase);
-                    break;
-                case 2:
-                    showGrenades(grenadeDataBase);
-                    break;
-                case 3: 
-                    showGear(gearDataBase);
-                    break;
-            }
+            showUpdateTable();
+        }
+        if(e.getSource() == delB){
+            delSelectedItem(table.getSelectedRow());
+        }
+        if(e.getSource() == addB){
+            inputForm.setVisible(true);
         }
     }
     
@@ -161,4 +171,71 @@ public class MainForm extends JFrame implements ActionListener {
             model.addRow(dataGear);
         }
     }
+    private void delSelectedItem(int item) {
+        if (item < 0) {
+            JOptionPane.showMessageDialog(this, "Please select an item to delete.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        ObjectSet itemToDelete = null;
+        ObjectContainer tableDB = null;
+
+        if (model.getValueAt(item, 3).equals("-") && model.getValueAt(item, 9).equals("-")) {
+            itemToDelete = grenadeDataBase.queryByExample(new Grenade((String)model.getValueAt(item, 0), null, 0, null));
+            tableDB = grenadeDataBase;
+        } else if (model.getValueAt(item, 7).equals("-") && model.getValueAt(item, 9).equals("-")) {
+            itemToDelete = weaponDataBase.queryByExample(new Weapon((String)model.getValueAt(item, 0), null, 0, 0, 0, 0, 0));
+            tableDB = weaponDataBase;
+        } else if (model.getValueAt(item, 3).equals("-") && model.getValueAt(item, 7).equals("-")) {
+            itemToDelete = gearDataBase.queryByExample(new Gear((String)model.getValueAt(item, 0), null, 0, 0, null, 0));
+            tableDB = gearDataBase;
+        }
+
+        if (itemToDelete == null) {
+            JOptionPane.showMessageDialog(this, "Could not determine the table for deletion.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
+        tableDB.delete(itemToDelete.next());
+
+        model.removeRow(item);
+    }
+    private void showUpdateTable() {
+        model.setRowCount(0);
+        switch (selectTableCB.getSelectedIndex()) {
+            case 0:
+                showWeapons(weaponDataBase);
+                showGrenades(grenadeDataBase);
+                showGear(gearDataBase);
+                break;
+            case 1:
+                showWeapons(weaponDataBase);
+                break;
+            case 2:
+                showGrenades(grenadeDataBase);
+                break;
+            case 3:
+                showGear(gearDataBase);
+                break;
+        }
+    }
+
+    @Override
+    public void mouseClicked(MouseEvent me) {
+        if(me.getClickCount() == 2){
+            System.out.println(model.getValueAt(table.rowAtPoint(me.getPoint()),table.columnAtPoint(me.getPoint())));
+        }
+    }
+
+    @Override
+    public void mousePressed(MouseEvent me) {}
+
+    @Override
+    public void mouseReleased(MouseEvent me) {}
+
+    @Override
+    public void mouseEntered(MouseEvent me) {}
+
+    @Override
+    public void mouseExited(MouseEvent me) {}
 }
