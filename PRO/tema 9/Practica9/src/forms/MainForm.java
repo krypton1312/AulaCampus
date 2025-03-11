@@ -38,12 +38,15 @@ public class MainForm extends JFrame implements ActionListener, MouseListener {
     private ObjectContainer weaponDataBase;
     private ObjectContainer grenadeDataBase;
     private InputForm inputForm;
+    private Account selectedAccount;
+    private JButton adminFormB;
     
     
     public MainForm(ObjectContainer gearDataBase, ObjectContainer weaponDataBase, ObjectContainer grenadeDataBase, Account selectedAccount){
         this.gearDataBase = gearDataBase;
         this.weaponDataBase = weaponDataBase;
         this.grenadeDataBase = grenadeDataBase;
+        this.selectedAccount = selectedAccount;
         this.inputForm = new InputForm(gearDataBase, weaponDataBase, grenadeDataBase);
         this.setTitle("CS2 Equipment List");
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -105,10 +108,18 @@ public class MainForm extends JFrame implements ActionListener, MouseListener {
             }
         });
         panel.add(selectTableCB);
-
+        
+        if(selectedAccount.isAdmin()){
+            adminFormB = new JButton("AdminPanel");
+            adminFormB.addActionListener(this);
+            adminFormB.setBounds(1020, 400, 220, 40);
+            adminFormB.setBackground(Color.WHITE);
+            adminFormB.setFocusable(false);
+            panel.add(adminFormB);
+        }
         closeB = new JButton("Close");
         closeB.addActionListener(this);
-        closeB.setBounds(720, 160, 220, 40);
+        closeB.setBounds(1020, 450, 220, 40);
         closeB.setBackground(Color.WHITE);
         closeB.setFocusable(false);
         panel.add(closeB);
@@ -136,6 +147,12 @@ public class MainForm extends JFrame implements ActionListener, MouseListener {
         }
         if(e.getSource() == addB){
             inputForm.setVisible(true);
+        }
+        if(e.getSource() == closeB){
+            gearDataBase.close();
+            weaponDataBase.close();
+            grenadeDataBase.close();
+            System.exit(0);
         }
     }
     
@@ -177,19 +194,9 @@ public class MainForm extends JFrame implements ActionListener, MouseListener {
             return;
         }
 
-        ObjectSet itemToDelete = null;
-        ObjectContainer tableDB = null;
+        ObjectSet itemToDelete = getItemToDelete(item);
+        ObjectContainer tableDB = getNameOfDataBase(item);
 
-        if (model.getValueAt(item, 3).equals("-") && model.getValueAt(item, 9).equals("-")) {
-            itemToDelete = grenadeDataBase.queryByExample(new Grenade((String)model.getValueAt(item, 0), null, 0, null));
-            tableDB = grenadeDataBase;
-        } else if (model.getValueAt(item, 7).equals("-") && model.getValueAt(item, 9).equals("-")) {
-            itemToDelete = weaponDataBase.queryByExample(new Weapon((String)model.getValueAt(item, 0), null, 0, 0, 0, 0, 0));
-            tableDB = weaponDataBase;
-        } else if (model.getValueAt(item, 3).equals("-") && model.getValueAt(item, 7).equals("-")) {
-            itemToDelete = gearDataBase.queryByExample(new Gear((String)model.getValueAt(item, 0), null, 0, 0, null, 0));
-            tableDB = gearDataBase;
-        }
 
         if (itemToDelete == null) {
             JOptionPane.showMessageDialog(this, "Could not determine the table for deletion.", "Error", JOptionPane.ERROR_MESSAGE);
@@ -219,23 +226,136 @@ public class MainForm extends JFrame implements ActionListener, MouseListener {
                 break;
         }
     }
-
-    @Override
-    public void mouseClicked(MouseEvent me) {
-        if(me.getClickCount() == 2){
-            System.out.println(model.getValueAt(table.rowAtPoint(me.getPoint()),table.columnAtPoint(me.getPoint())));
+    
+    private ObjectContainer getNameOfDataBase(int item){
+        if (model.getValueAt(item, 3).equals("-") && model.getValueAt(item, 9).equals("-")) {
+            return grenadeDataBase;
+        } else if (model.getValueAt(item, 7).equals("-") && model.getValueAt(item, 9).equals("-")) {
+            return weaponDataBase;
+        } else if (model.getValueAt(item, 3).equals("-") && model.getValueAt(item, 7).equals("-")) {
+            return gearDataBase;
+        }
+        return null;
+    }
+    
+    private ObjectSet getItemToDelete(int item){
+        if (model.getValueAt(item, 3).equals("-") && model.getValueAt(item, 9).equals("-")) {
+            return grenadeDataBase.queryByExample(new Grenade((String)model.getValueAt(item, 0), null, 0, null));
+        } else if (model.getValueAt(item, 7).equals("-") && model.getValueAt(item, 9).equals("-")) {
+            return weaponDataBase.queryByExample(new Weapon((String)model.getValueAt(item, 0), null, 0, 0, 0, 0, 0));
+        } else if (model.getValueAt(item, 3).equals("-") && model.getValueAt(item, 7).equals("-")) {
+            return gearDataBase.queryByExample(new Gear((String)model.getValueAt(item, 0), null, 0, 0, null, 0));
+        }
+        return null;
+    }
+    private void updateObjectField(Object obj, int column, String newValue) {
+        if (obj instanceof Weapon) {
+            Weapon weapon = (Weapon) obj;
+            switch (column) {
+                case 0:
+                    weapon.setName(newValue);
+                    return;
+                case 1:
+                    weapon.setType(newValue);
+                    return;
+                case 2:
+                    weapon.setPrice(Double.parseDouble(newValue));
+                    return;
+                case 3:
+                    weapon.setDamage(Integer.parseInt(newValue));
+                    return;
+                case 4:
+                    weapon.setArmourPenetration(Double.parseDouble(newValue));
+                    return;
+                case 5:
+                    weapon.setFireRate(Integer.parseInt(newValue));
+                    return;
+                case 6:
+                    weapon.setMagazineSize(Integer.parseInt(newValue));
+            }
+        } else if (obj instanceof Grenade) {
+            Grenade grenade = (Grenade) obj;
+            switch (column) {
+                case 0:
+                    grenade.setName(newValue);
+                    return;
+                case 1:
+                    grenade.setType(newValue);
+                    return;
+                case 2:
+                    grenade.setPrice(Double.parseDouble(newValue));
+                    return;
+                case 7:
+                    grenade.setEffect(newValue);
+            }
+        } else if (obj instanceof Gear) {
+            Gear gear = (Gear) obj;
+            switch (column) {
+                case 0:
+                    gear.setName(newValue);
+                    return;
+                case 1:
+                    gear.setType(newValue);
+                    return;
+                case 2:
+                    gear.setPrice(Double.parseDouble(newValue));
+                    return;
+                case 8:
+                    gear.setArmourValue(Integer.parseInt(newValue));
+                    return;
+                case 9:
+                    gear.setHasHelmet(Boolean.parseBoolean(newValue));
+                    return;
+                case 10:
+                    gear.setDefuseTime(Integer.parseInt(newValue));
+            }
         }
     }
 
     @Override
-    public void mousePressed(MouseEvent me) {}
+    public void mouseClicked(MouseEvent me) {
+        if (me.getClickCount() == 3) {
+            if (this.selectedAccount.isAdmin()) {
+                int row = table.rowAtPoint(me.getPoint());
+                int col = table.columnAtPoint(me.getPoint());
+
+                Object oldValue = model.getValueAt(row, col);
+                String input = JOptionPane.showInputDialog(null, "Enter a new value:", oldValue);
+
+                if (input != null) {
+                    ObjectContainer dataBase = getNameOfDataBase(row);
+                    if (dataBase == null) {
+                        JOptionPane.showMessageDialog(null, "Database not found for this row.");
+                        return;
+                    }
+                    ObjectSet<?> result = getItemToDelete(row);
+
+                    if (result.hasNext()) {
+                        Object obj = result.next();
+                        updateObjectField(obj, col, input);
+                        dataBase.store(obj);
+                        dataBase.commit();
+                    }
+                    showUpdateTable();
+                }
+            }else{
+                JOptionPane.showMessageDialog(null, "You dont have permission to modificate.");
+            }
+        }
+        if(me.getClickCount() == 2){
+            
+        }
+    }
 
     @Override
-    public void mouseReleased(MouseEvent me) {}
+    public void mousePressed(MouseEvent me){}
 
     @Override
-    public void mouseEntered(MouseEvent me) {}
+    public void mouseReleased(MouseEvent me){}
 
     @Override
-    public void mouseExited(MouseEvent me) {}
+    public void mouseEntered(MouseEvent me){}
+
+    @Override
+    public void mouseExited(MouseEvent me){}
 }

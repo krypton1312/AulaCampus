@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="Act6">
+  <ClassDiagramComponents>
+    <Class name="Cuenta" package="" visibility="public" xPosition="161.0" yPosition="300.0">
+      <Fields>
+        <Field name="titular" type="String" visibility="private"/>
+        <Field name="cantidad" type="double" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="ingresar" returnType="void" visibility="public">
+          <Argument type="double" name="cantidad"/>
+        </Method>
+        <Method name="retirar" returnType="void" visibility="public">
+          <Argument type="double" name="cantidad"/>
+        </Method>
+        <Method name="mostrarDatos" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations/>
+</ClassDiagram>

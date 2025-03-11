@@ -28,6 +28,7 @@ public class Practica9 {
         if(loginForm.isLoginSuccessfull){
             Account selectedAccount = loginForm.getSelectedAccount();
             System.out.println(selectedAccount);
+            user.close();
             MainForm mainForm = new MainForm(gear, weapons, grenades, selectedAccount);
         }
     }

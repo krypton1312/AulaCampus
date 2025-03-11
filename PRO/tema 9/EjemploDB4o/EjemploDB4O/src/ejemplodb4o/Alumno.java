@@ -5,14 +5,14 @@ public class Alumno {
     private String nombre;
     private String apellidos;
     private double nota;
-    private String Observaciones;
+    private String observaciones;
 
-    public Alumno(String nia, String nombre, String apellidos, double nota, String Observaciones) {
+    public Alumno(String nia, String nombre, String apellidos, double nota, String observaciones) {
         this.nia = nia;
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.nota = nota;
-        this.Observaciones = Observaciones;
+        this.observaciones = observaciones;
     }
 
     public String getNia() {
@@ -48,15 +48,17 @@ public class Alumno {
     }
 
     public String getObservaciones() {
-        return Observaciones;
+        return observaciones;
     }
 
-    public void setObservaciones(String Observaciones) {
-        this.Observaciones = Observaciones;
+    public void setObservaciones(String observaciones) {
+        this.observaciones = observaciones;
     }
 
     @Override
     public String toString() {
-        return "Alumno{" + "nia=" + nia + ", nombre=" + nombre + ", apellidos=" + apellidos + ", nota=" + nota + ", Observaciones=" + Observaciones + '}';
+        return "Alumno{" + "nia=" + nia + ", nombre=" + nombre + ", apellidos=" + apellidos + ", nota=" + nota + ", observaciones=" + observaciones + '}';
     }
+    
+    
 }

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="Act3">
+  <ClassDiagramComponents>
+    <Class name="Proveedor" package="" visibility="public" xPosition="139.0" yPosition="201.0">
+      <Fields>
+        <Field name="CIF" type="String" visibility="private"/>
+        <Field name="nombreEmpresa" type="String" visibility="private"/>
+        <Field name="descripcion" type="String" visibility="private"/>
+        <Field name="sector" type="String" visibility="private"/>
+        <Field name="direccion" type="String" visibility="private"/>
+        <Field name="telefono" type="String" visibility="private"/>
+        <Field name="poblacion" type="String" visibility="private"/>
+        <Field name="codPostal" type="int" visibility="private"/>
+        <Field name="correo" type="String" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="verificaCorreo" returnType="boolean" visibility="public"/>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations/>
+</ClassDiagram>
