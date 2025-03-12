@@ -1,5 +1,4 @@
 SAVEPOINT inicio;
-
 INSERT INTO jobs VALUES ('B_SIT', 'Baby Sitter', 500, 55000);
 
 INSERT INTO departments (department_id, department_name, manager_id, location_id)
@@ -8,7 +7,6 @@ FROM departments;
 
 INSERT INTO employees (employee_id, first_name, last_name, email, phone_number,hire_date, job_id, salary, commission_pct, manager_id, department_id)
 SELECT MAX(employee_id) + 1, 'Jonny', 'Sins', 'BIGHEAD', '555.555.4322' , SYSDATE, 'B_SIT', 55000, null, null, 280  FROM employees;
-
 COMMIT;
 
 SAVEPOINT JONNY;
@@ -16,6 +14,7 @@ SAVEPOINT JONNY;
 UPDATE employees
 SET salary = 50000
 WHERE first_name = 'Jonny' AND last_name = 'Sins';
+
 
 INSERT INTO employees (employee_id, first_name, last_name, email, phone_number,hire_date, job_id, salary, commission_pct, manager_id, department_id)
 SELECT MAX(employee_id) + 1, 'Michael', 'Jordan', 'goodman', '444.555.4322' , SYSDATE, 'B_SIT', 5000, null, null, 280  FROM employees;
@@ -60,18 +59,20 @@ UNION ALL
 SELECT MAX(employee_id) + 10, 'Elena', 'Mendoza', 'emendoza', '444.555.1010', SYSDATE, 'AD_VP', 15000, 0.25, 107, 90 FROM employees;
 
 COMMIT;
-SAVEPOINT emp;
 
+select * from employees;
 -- 1. Add a new job position for 'Graphic Designer' with a salary range
 SAVEPOINT job1;
 INSERT INTO jobs VALUES ('G_DES', 'Graphic Designer', 6000, 75000);
 COMMIT;
 
+select * from jobs;
 -- 2. Create a new department 'Marketing and Communications' and assign it a location
 SAVEPOINT department1;
 INSERT INTO departments (department_id, department_name, manager_id, location_id)
 SELECT MAX(department_id) + 1, 'Marketing and Communications', NULL, 2000 FROM departments;
 COMMIT;
+select * from departments;
 
 -- 3. Add a new employee 'Isabella', a 'Graphic Designer', with a salary and commission
 SAVEPOINT employee1;
@@ -86,14 +87,14 @@ SET salary = 60000
 WHERE first_name = 'Jonny' AND last_name = 'Sins';
 COMMIT;
 
+select * from employees where first_name = 'Jonny' AND last_name = 'Sins';
+
 -- 5. Remove an old employee 'Michael Jordan' from the employees table
 SAVEPOINT deleteEmployee1;
 DELETE FROM employees
 WHERE first_name = 'Michael' AND last_name = 'Jordan';
 COMMIT;
+select * from employees where first_name = 'Michael' AND last_name = 'Jordan';
 
-SAVEPOINT beforetrunc
 TRUNCATE TABLE job_history;
 SELECT * from job_history;
-
-rollback beforetrunc;
