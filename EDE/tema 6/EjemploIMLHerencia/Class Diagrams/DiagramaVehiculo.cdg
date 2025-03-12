@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="DiagramaVehiculo">
+  <ClassDiagramComponents>
+    <Class name="Vehiculo" package="" visibility="public" xPosition="543.0" yPosition="281.0">
+      <Fields>
+        <Field name="matricula" type="String" visibility="private"/>
+        <Field name="marca" type="String" visibility="private"/>
+        <Field name="modelo" type="String" visibility="private"/>
+        <Field name="precio" type="double" visibility="private"/>
+        <Field name="cilindrada" type="int" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="matricula"/>
+          <Argument type="String" name="marca"/>
+          <Argument type="String" name="modelo"/>
+          <Argument type="double" name="precio"/>
+          <Argument type="int" name="cilindrado"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="setMatricula" returnType="void" visibility="public">
+          <Argument type="String" name="matricula"/>
+        </Method>
+        <Method name="getMatricula" returnType="String" visibility="public"/>
+        <Method name="toString" returnType="String" visibility="public"/>
+        <Method name="calculaIva" returnType="double" visibility="public">
+          <Argument type="double" name="porcentaje"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Coche" package="" visibility="public" xPosition="466.0" yPosition="650.0">
+      <Fields>
+        <Field name="numPuertas" type="int" visibility="private"/>
+        <Field name="extras" type="String" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="matricula"/>
+          <Argument type="String" name="marca"/>
+          <Argument type="String" name="modelo"/>
+          <Argument type="double" name="precio"/>
+          <Argument type="int" name="cilindrado"/>
+          <Argument type="int" name="numPuertas"/>
+          <Argument type="String" name="extras"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getNumPuertas" returnType="int" visibility="public"/>
+        <Method name="setNumPuertas" returnType="void" visibility="public">
+          <Argument type="int" name="numPuertas"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <IsRelation name="is" source="Coche" target="Vehiculo"/>
+  </ClassDiagramRelations>
+</ClassDiagram>

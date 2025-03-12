@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="Practica9">
+  <ClassDiagramComponents>
+    <Class name="AdminForm" package="forms" visibility="public" xPosition="20.0" yPosition="20.0">
+      <Fields/>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="InputForm" package="forms" visibility="public" xPosition="320.0" yPosition="20.0">
+      <Fields>
+        <Field name="datos" type="String[]" visibility="protected" isStatic="true"/>
+        <Field name="panel" type="JPanel" visibility="package"/>
+        <Field name="nameT" type="JLabel" visibility="package"/>
+        <Field name="typeT" type="JLabel" visibility="package"/>
+        <Field name="priceT" type="JLabel" visibility="package"/>
+        <Field name="damageT" type="JLabel" visibility="package"/>
+        <Field name="armorPenT" type="JLabel" visibility="package"/>
+        <Field name="fireT" type="JLabel" visibility="package"/>
+        <Field name="magazineT" type="JLabel" visibility="package"/>
+        <Field name="effectT" type="JLabel" visibility="package"/>
+        <Field name="armorValueT" type="JLabel" visibility="package"/>
+        <Field name="helmet" type="JLabel" visibility="package"/>
+        <Field name="defuseT" type="JLabel" visibility="package"/>
+        <Field name="categoryT" type="JLabel" visibility="package"/>
+        <Field name="nameTF" type="JTextField" visibility="package"/>
+        <Field name="typeTF" type="JTextField" visibility="package"/>
+        <Field name="priceTF" type="JTextField" visibility="package"/>
+        <Field name="damageTF" type="JTextField" visibility="package"/>
+        <Field name="armorPenTF" type="JTextField" visibility="package"/>
+        <Field name="fireTF" type="JTextField" visibility="package"/>
+        <Field name="magazineTF" type="JTextField" visibility="package"/>
+        <Field name="effectTF" type="JTextField" visibility="package"/>
+        <Field name="armorValueTF" type="JTextField" visibility="package"/>
+        <Field name="helmetTF" type="JComboBox" visibility="package"/>
+        <Field name="defuseTF" type="JTextField" visibility="package"/>
+        <Field name="categoryCB" type="JComboBox" visibility="package"/>
+        <Field name="inputB" type="JButton" visibility="package"/>
+        <Field name="gearDataBase" type="ObjectContainer" visibility="private"/>
+        <Field name="weaponDataBase" type="ObjectContainer" visibility="private"/>
+        <Field name="grenadeDataBase" type="ObjectContainer" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="ObjectContainer" name="gearDataBase"/>
+          <Argument type="ObjectContainer" name="weaponDataBase"/>
+          <Argument type="ObjectContainer" name="grenadeDataBase"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="actionPerformed" returnType="void" visibility="public">
+          <Argument type="ActionEvent" name="e"/>
+        </Method>
+        <Method name="selectedItem" returnType="void" visibility="public"/>
+        <Method name="insertToDataBase" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="LoginForm" package="forms" visibility="public" xPosition="620.0" yPosition="20.0">
+      <Fields>
+        <Field name="panel" type="BackgroundPanel" visibility="private"/>
+        <Field name="textLoginL" type="JLabel" visibility="private"/>
+        <Field name="loginL" type="JLabel" visibility="private"/>
+        <Field name="passwordL" type="JLabel" visibility="private"/>
+        <Field name="loginTF" type="JTextField" visibility="private"/>
+        <Field name="passwordTF" type="JPasswordField" visibility="private"/>
+        <Field name="loginB" type="JButton" visibility="private"/>
+        <Field name="user" type="ObjectContainer" visibility="private"/>
+        <Field name="selectedAccount" type="Account" visibility="private"/>
+        <Field name="isLoginSuccessfull" type="boolean" visibility="public"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="ObjectContainer" name="user"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="actionPerformed" returnType="void" visibility="public">
+          <Argument type="ActionEvent" name="e"/>
+        </Method>
+        <Method name="getSelectedAccount" returnType="Account" visibility="public"/>
+        <Method name="incorrectLoginAndPasswordPane" returnType="void" visibility="public"/>
+        <Method name="createNewAccPane" returnType="int" visibility="public"/>
+        <Method name="showErrorDialog" returnType="void" visibility="private">
+          <Argument type="String" name="message"/>
+        </Method>
+        <Method name="handleError" returnType="void" visibility="public">
+          <Argument type="String" name="choose"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="MainForm" package="forms" visibility="public" xPosition="920.0" yPosition="20.0">
+      <Fields>
+        <Field name="panel" type="JPanel" visibility="private"/>
+        <Field name="table" type="JTable" visibility="private"/>
+        <Field name="model" type="DefaultTableModel" visibility="private"/>
+        <Field name="scroll" type="JScrollPane" visibility="private"/>
+        <Field name="header" type="String[]" visibility="private"/>
+        <Field name="data" type="Object[][]" visibility="private"/>
+        <Field name="addB" type="JButton" visibility="private"/>
+        <Field name="delB" type="JButton" visibility="private"/>
+        <Field name="selectTableCB" type="JComboBox&lt;String&gt;" visibility="private"/>
+        <Field name="closeB" type="JButton" visibility="private"/>
+        <Field name="gearDataBase" type="ObjectContainer" visibility="private"/>
+        <Field name="weaponDataBase" type="ObjectContainer" visibility="private"/>
+        <Field name="grenadeDataBase" type="ObjectContainer" visibility="private"/>
+        <Field name="inputForm" type="InputForm" visibility="private"/>
+        <Field name="selectedAccount" type="Account" visibility="private"/>
+        <Field name="adminFormB" type="JButton" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="ObjectContainer" name="gearDataBase"/>
+          <Argument type="ObjectContainer" name="weaponDataBase"/>
+          <Argument type="ObjectContainer" name="grenadeDataBase"/>
+          <Argument type="Account" name="selectedAccount"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="actionPerformed" returnType="void" visibility="public">
+          <Argument type="ActionEvent" name="e"/>
+        </Method>
+        <Method name="showWeapons" returnType="void" visibility="private">
+          <Argument type="ObjectContainer" name="weaponDataBase"/>
+        </Method>
+        <Method name="showGrenades" returnType="void" visibility="private">
+          <Argument type="ObjectContainer" name="grenadeDataBase"/>
+        </Method>
+        <Method name="showGear" returnType="void" visibility="private">
+          <Argument type="ObjectContainer" name="gearDataBase"/>
+        </Method>
+        <Method name="delSelectedItem" returnType="void" visibility="private">
+          <Argument type="int" name="item"/>
+        </Method>
+        <Method name="showUpdateTable" returnType="void" visibility="private"/>
+        <Method name="getNameOfDataBase" returnType="ObjectContainer" visibility="private">
+          <Argument type="int" name="item"/>
+        </Method>
+        <Method name="getItemToDelete" returnType="ObjectSet" visibility="private">
+          <Argument type="int" name="item"/>
+        </Method>
+        <Method name="updateObjectField" returnType="void" visibility="private">
+          <Argument type="Object" name="obj"/>
+          <Argument type="int" name="column"/>
+          <Argument type="String" name="newValue"/>
+        </Method>
+        <Method name="mouseClicked" returnType="void" visibility="public">
+          <Argument type="MouseEvent" name="me"/>
+        </Method>
+        <Method name="mousePressed" returnType="void" visibility="public">
+          <Argument type="MouseEvent" name="me"/>
+        </Method>
+        <Method name="mouseReleased" returnType="void" visibility="public">
+          <Argument type="MouseEvent" name="me"/>
+        </Method>
+        <Method name="mouseEntered" returnType="void" visibility="public">
+          <Argument type="MouseEvent" name="me"/>
+        </Method>
+        <Method name="mouseExited" returnType="void" visibility="public">
+          <Argument type="MouseEvent" name="me"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Account" package="objects" visibility="public" xPosition="1220.0" yPosition="20.0">
+      <Fields>
+        <Field name="login" type="String" visibility="private"/>
+        <Field name="password" type="String" visibility="private"/>
+        <Field name="admin" type="Boolean" visibility="private"/>
+        <Field name="superAdmin" type="Boolean" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="login"/>
+          <Argument type="String" name="password"/>
+          <Argument type="Boolean" name="admin"/>
+          <Argument type="Boolean" name="superAdmin"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getLogin" returnType="String" visibility="public"/>
+        <Method name="setLogin" returnType="void" visibility="public">
+          <Argument type="String" name="login"/>
+        </Method>
+        <Method name="getPassword" returnType="String" visibility="public"/>
+        <Method name="setPassword" returnType="void" visibility="public">
+          <Argument type="String" name="password"/>
+        </Method>
+        <Method name="isAdmin" returnType="Boolean" visibility="public"/>
+        <Method name="setAdmin" returnType="void" visibility="public">
+          <Argument type="Boolean" name="admin"/>
+        </Method>
+        <Method name="isSuperAdmin" returnType="Boolean" visibility="public"/>
+        <Method name="setSuperAdmin" returnType="void" visibility="public">
+          <Argument type="Boolean" name="superAdmin"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Equipment" package="objects" visibility="public" isAbstract="true" xPosition="1520.0" yPosition="20.0">
+      <Fields>
+        <Field name="name" type="String" visibility="private"/>
+        <Field name="type" type="String" visibility="private"/>
+        <Field name="price" type="double" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="name"/>
+          <Argument type="String" name="type"/>
+          <Argument type="double" name="price"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getName" returnType="String" visibility="public"/>
+        <Method name="setName" returnType="void" visibility="public">
+          <Argument type="String" name="name"/>
+        </Method>
+        <Method name="getType" returnType="String" visibility="public"/>
+        <Method name="setType" returnType="void" visibility="public">
+          <Argument type="String" name="type"/>
+        </Method>
+        <Method name="getPrice" returnType="double" visibility="public"/>
+        <Method name="setPrice" returnType="void" visibility="public">
+          <Argument type="double" name="price"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Gear" package="objects" visibility="public" xPosition="1820.0" yPosition="20.0">
+      <Fields>
+        <Field name="armourValue" type="int" visibility="private"/>
+        <Field name="hasHelmet" type="Boolean" visibility="private"/>
+        <Field name="defuseTime" type="int" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="name"/>
+          <Argument type="String" name="type"/>
+          <Argument type="double" name="price"/>
+          <Argument type="int" name="armourValue"/>
+          <Argument type="Boolean" name="hasHelmet"/>
+          <Argument type="int" name="defuseTime"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getArmourValue" returnType="int" visibility="public"/>
+        <Method name="setArmourValue" returnType="void" visibility="public">
+          <Argument type="int" name="armourValue"/>
+        </Method>
+        <Method name="isHasHelmet" returnType="Boolean" visibility="public"/>
+        <Method name="setHasHelmet" returnType="void" visibility="public">
+          <Argument type="Boolean" name="hasHelmet"/>
+        </Method>
+        <Method name="getDefuseTime" returnType="int" visibility="public"/>
+        <Method name="setDefuseTime" returnType="void" visibility="public">
+          <Argument type="int" name="defuseTime"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Grenade" package="objects" visibility="public" xPosition="2120.0" yPosition="20.0">
+      <Fields>
+        <Field name="effect" type="String" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="name"/>
+          <Argument type="String" name="type"/>
+          <Argument type="double" name="price"/>
+          <Argument type="String" name="effect"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getEffect" returnType="String" visibility="public"/>
+        <Method name="setEffect" returnType="void" visibility="public">
+          <Argument type="String" name="effect"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Weapon" package="objects" visibility="public" xPosition="20.0" yPosition="420.0">
+      <Fields>
+        <Field name="damage" type="int" visibility="private"/>
+        <Field name="armourPenetration" type="double" visibility="private"/>
+        <Field name="fireRate" type="int" visibility="private"/>
+        <Field name="magazineSize" type="int" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="name"/>
+          <Argument type="String" name="type"/>
+          <Argument type="double" name="price"/>
+          <Argument type="int" name="damage"/>
+          <Argument type="double" name="armourPenetration"/>
+          <Argument type="int" name="fireRate"/>
+          <Argument type="int" name="magazineSize"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getDamage" returnType="int" visibility="public"/>
+        <Method name="setDamage" returnType="void" visibility="public">
+          <Argument type="int" name="damage"/>
+        </Method>
+        <Method name="getArmourPenetration" returnType="double" visibility="public"/>
+        <Method name="setArmourPenetration" returnType="void" visibility="public">
+          <Argument type="double" name="armourPenetration"/>
+        </Method>
+        <Method name="getFireRate" returnType="int" visibility="public"/>
+        <Method name="setFireRate" returnType="void" visibility="public">
+          <Argument type="int" name="fireRate"/>
+        </Method>
+        <Method name="getMagazineSize" returnType="int" visibility="public"/>
+        <Method name="setMagazineSize" returnType="void" visibility="public">
+          <Argument type="int" name="magazineSize"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Practica9" package="practica9" visibility="public" xPosition="64.0" yPosition="267.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String[]" name="args"/>
+        </Method>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <UseRelation source="forms.LoginForm" target="objects.Account" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="objects.Weapon" target="objects.Equipment"/>
+    <HasRelation name="inputForm" source="forms.MainForm" target="forms.InputForm" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="objects.Grenade" target="objects.Equipment"/>
+    <HasRelation name="selectedAccount" source="forms.MainForm" target="objects.Account" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="selectedAccount" source="forms.LoginForm" target="objects.Account" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="objects.Gear" target="objects.Equipment"/>
+  </ClassDiagramRelations>
+</ClassDiagram>
