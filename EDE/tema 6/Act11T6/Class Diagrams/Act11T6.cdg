@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="Act11T6">
+  <ClassDiagramComponents>
+    <Class name="Coche" package="" visibility="public" xPosition="101.0" yPosition="264.0">
+      <Fields>
+        <Field name="matricula" type="String" visibility="private"/>
+        <Field name="marca" type="String" visibility="private"/>
+        <Field name="modelo" type="String" visibility="private"/>
+        <Field name="cilindrada" type="int" visibility="private"/>
+        <Field name="potencia" type="double" visibility="private"/>
+        <Field name="velMax" type="double" visibility="private"/>
+        <Field name="precio" type="double" visibility="private"/>
+        <Field name="evalElectr" type="boolean" visibility="private"/>
+        <Field name="airbag" type="boolean" visibility="private"/>
+        <Field name="cirre" type="boolean" visibility="private"/>
+        <Field name="motor" type="char" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="calculaIva" returnType="double" visibility="public"/>
+        <Method name="toString" returnType="String" visibility="public"/>
+        <Method name="importeExtra" returnType="double" visibility="public"/>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations/>
+</ClassDiagram>

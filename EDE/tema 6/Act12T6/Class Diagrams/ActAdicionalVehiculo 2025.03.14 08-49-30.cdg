@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="ActAdicionalVehiculo">
+  <ClassDiagramComponents>
+    <Class name="ActAdicionalVehiculo" package="actadicionalvehiculo" visibility="public" xPosition="20.0" yPosition="20.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String[]" name="args"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Vehiculo" package="actadicionalvehiculo" visibility="public" xPosition="320.0" yPosition="20.0">
+      <Fields>
+        <Field name="matricula" type="String" visibility="private"/>
+        <Field name="marca" type="String" visibility="private"/>
+        <Field name="modelo" type="String" visibility="private"/>
+        <Field name="cilindrada" type="String" visibility="private"/>
+        <Field name="potencia" type="String" visibility="private"/>
+        <Field name="velocidadMaxima" type="double" visibility="private"/>
+        <Field name="calor" type="String" visibility="private"/>
+        <Field name="precio" type="double" visibility="private"/>
+        <Field name="elevalunas" type="boolean" visibility="private"/>
+        <Field name="airbag" type="boolean" visibility="private"/>
+        <Field name="cierreCen" type="boolean" visibility="private"/>
+        <Field name="motor" type="String" visibility="private"/>
+        <Field name="averiado" type="boolean" visibility="private"/>
+        <Field name="numVehiculos" type="int" visibility="private" isStatic="true"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="String" name="matricula"/>
+          <Argument type="String" name="marca"/>
+          <Argument type="String" name="modelo"/>
+          <Argument type="String" name="cilindrada"/>
+          <Argument type="String" name="potencia"/>
+          <Argument type="double" name="velocidadMaxima"/>
+          <Argument type="String" name="calor"/>
+          <Argument type="double" name="precio"/>
+          <Argument type="boolean" name="elevalunas"/>
+          <Argument type="boolean" name="airbag"/>
+          <Argument type="boolean" name="cierreCen"/>
+          <Argument type="String" name="motor"/>
+          <Argument type="boolean" name="averiado"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getMatricula" returnType="String" visibility="public"/>
+        <Method name="setMatricula" returnType="void" visibility="public">
+          <Argument type="String" name="matricula"/>
+        </Method>
+        <Method name="getMarca" returnType="String" visibility="public"/>
+        <Method name="setMarca" returnType="void" visibility="public">
+          <Argument type="String" name="marca"/>
+        </Method>
+        <Method name="getModelo" returnType="String" visibility="public"/>
+        <Method name="setModelo" returnType="void" visibility="public">
+          <Argument type="String" name="modelo"/>
+        </Method>
+        <Method name="getCilindrada" returnType="String" visibility="public"/>
+        <Method name="setCilindrada" returnType="void" visibility="public">
+          <Argument type="String" name="cilindrada"/>
+        </Method>
+        <Method name="getPotencia" returnType="String" visibility="public"/>
+        <Method name="setPotencia" returnType="void" visibility="public">
+          <Argument type="String" name="potencia"/>
+        </Method>
+        <Method name="getVelocidadMaxima" returnType="double" visibility="public"/>
+        <Method name="setVelocidadMaxima" returnType="void" visibility="public">
+          <Argument type="double" name="velocidadMaxima"/>
+        </Method>
+        <Method name="getCalor" returnType="String" visibility="public"/>
+        <Method name="setCalor" returnType="void" visibility="public">
+          <Argument type="String" name="calor"/>
+        </Method>
+        <Method name="getPrecio" returnType="double" visibility="public"/>
+        <Method name="setPrecio" returnType="void" visibility="public">
+          <Argument type="double" name="precio"/>
+        </Method>
+        <Method name="isElevalunas" returnType="boolean" visibility="public"/>
+        <Method name="setElevalunas" returnType="void" visibility="public">
+          <Argument type="boolean" name="elevalunas"/>
+        </Method>
+        <Method name="isAirbag" returnType="boolean" visibility="public"/>
+        <Method name="setAirbag" returnType="void" visibility="public">
+          <Argument type="boolean" name="airbag"/>
+        </Method>
+        <Method name="isCierreCen" returnType="boolean" visibility="public"/>
+        <Method name="setCierreCen" returnType="void" visibility="public">
+          <Argument type="boolean" name="cierreCen"/>
+        </Method>
+        <Method name="getMotor" returnType="String" visibility="public"/>
+        <Method name="setMotor" returnType="void" visibility="public">
+          <Argument type="String" name="motor"/>
+        </Method>
+        <Method name="isAveriado" returnType="boolean" visibility="public"/>
+        <Method name="setAveriado" returnType="void" visibility="public">
+          <Argument type="boolean" name="averiado"/>
+        </Method>
+        <Method name="getNumVehiculos" returnType="int" visibility="public" isStatic="true"/>
+        <Method name="setNumVehiculos" returnType="void" visibility="public" isStatic="true">
+          <Argument type="int" name="numVehiculos"/>
+        </Method>
+        <Method name="calculaIVA" returnType="double" visibility="private"/>
+        <Method name="importeExtra" returnType="void" visibility="public"/>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations/>
+</ClassDiagram>
