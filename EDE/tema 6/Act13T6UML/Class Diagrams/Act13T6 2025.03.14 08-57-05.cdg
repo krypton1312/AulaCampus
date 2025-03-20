@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="Act13T6">
+  <ClassDiagramComponents>
+    <Class name="Persona" package="practica3" visibility="public" xPosition="20.0" yPosition="20.0">
+      <Fields>
+        <Field name="sc" type="Scanner" visibility="package"/>
+        <Field name="nombre" type="String" visibility="private"/>
+        <Field name="edad" type="int" visibility="private"/>
+        <Field name="dni" type="int" visibility="private"/>
+        <Field name="sexo" type="char" visibility="private"/>
+        <Field name="peso" type="double" visibility="private"/>
+        <Field name="altura" type="double" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="String" name="nombre"/>
+          <Argument type="int" name="edad"/>
+          <Argument type="char" name="sexo"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="String" name="nombre"/>
+          <Argument type="int" name="edad"/>
+          <Argument type="int" name="dni"/>
+          <Argument type="char" name="sexo"/>
+          <Argument type="double" name="peso"/>
+          <Argument type="double" name="altura"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="setNombre" returnType="void" visibility="public">
+          <Argument type="String" name="nombre"/>
+        </Method>
+        <Method name="setEdad" returnType="void" visibility="public">
+          <Argument type="int" name="edad"/>
+        </Method>
+        <Method name="setDNI" returnType="void" visibility="public">
+          <Argument type="int" name="dni"/>
+        </Method>
+        <Method name="setSexo" returnType="void" visibility="public">
+          <Argument type="char" name="sexo"/>
+        </Method>
+        <Method name="setPeso" returnType="void" visibility="public">
+          <Argument type="double" name="peso"/>
+        </Method>
+        <Method name="setAltura" returnType="void" visibility="public">
+          <Argument type="double" name="altura"/>
+        </Method>
+        <Method name="getNombre" returnType="String" visibility="public"/>
+        <Method name="getDNI" returnType="int" visibility="public"/>
+        <Method name="getEdad" returnType="int" visibility="public"/>
+        <Method name="getSexo" returnType="char" visibility="public"/>
+        <Method name="getPeso" returnType="double" visibility="public"/>
+        <Method name="getAltura" returnType="double" visibility="public"/>
+        <Method name="pedirTodosDatos" returnType="void" visibility="public">
+          <Argument type="Scanner" name="sc"/>
+        </Method>
+        <Method name="mostrarDatos" returnType="void" visibility="public"/>
+        <Method name="calcularMC" returnType="int" visibility="public"/>
+        <Method name="esMayorDeEdad" returnType="boolean" visibility="public"/>
+        <Method name="comprobarSexo" returnType="void" visibility="public">
+          <Argument type="char" name="sexo"/>
+        </Method>
+        <Method name="generaLetraDNI" returnType="char" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Practica3" package="practica3" visibility="public" xPosition="320.0" yPosition="20.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String[]" name="args"/>
+        </Method>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations/>
+</ClassDiagram>

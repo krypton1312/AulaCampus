@@ -1,12 +1,12 @@
 package practica9;
 
-import forms.*;
 import com.db4o.*;
+import forms.LoginForm;
+import forms.MainForm;
 import objects.Account;
 //Gear(String name, String type, double price, int armourValue, boolean hasHelmet, int defuseTime)
 
 //Weapons(String name, String type, double price, int damage, double armourPenetration, int fireRate, int magazineSize)
-
 //Grenade(String name, String type, double price, String effect
 public class Practica9 {
 
@@ -15,6 +15,8 @@ public class Practica9 {
         ObjectContainer gear = Db4oEmbedded.openFile("gear.db4o");
         ObjectContainer weapons = Db4oEmbedded.openFile("weapons.db4o");
         ObjectContainer grenades = Db4oEmbedded.openFile("grenades.db4o");
+        ObjectContainer description = Db4oEmbedded.openFile("description.db4o");
+        
         LoginForm loginForm = new LoginForm(user);
         
         while(loginForm.isVisible()){
@@ -29,7 +31,7 @@ public class Practica9 {
             Account selectedAccount = loginForm.getSelectedAccount();
             System.out.println(selectedAccount);
             user.close();
-            MainForm mainForm = new MainForm(gear, weapons, grenades, selectedAccount);
+            MainForm mainForm = new MainForm(gear, weapons, grenades, selectedAccount, description);
         }
     }
 }
