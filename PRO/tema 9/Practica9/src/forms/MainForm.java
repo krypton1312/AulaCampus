@@ -37,16 +37,18 @@ public class MainForm extends JFrame implements ActionListener, MouseListener {
     private ObjectContainer gearDataBase;
     private ObjectContainer weaponDataBase;
     private ObjectContainer grenadeDataBase;
+    private ObjectContainer description;
     private InputForm inputForm;
     private Account selectedAccount;
     private JButton adminFormB;
     
     
-    public MainForm(ObjectContainer gearDataBase, ObjectContainer weaponDataBase, ObjectContainer grenadeDataBase, Account selectedAccount){
+    public MainForm(ObjectContainer gearDataBase, ObjectContainer weaponDataBase, ObjectContainer grenadeDataBase, Account selectedAccount, ObjectContainer description){
         this.gearDataBase = gearDataBase;
         this.weaponDataBase = weaponDataBase;
         this.grenadeDataBase = grenadeDataBase;
         this.selectedAccount = selectedAccount;
+        this.description = description;
         this.inputForm = new InputForm(gearDataBase, weaponDataBase, grenadeDataBase);
         this.setTitle("CS2 Equipment List");
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -343,7 +345,12 @@ public class MainForm extends JFrame implements ActionListener, MouseListener {
             }
         }
         if(me.getClickCount() == 2){
+            int row = table.rowAtPoint(me.getPoint());
+            String name = (String)model.getValueAt(row, 0);
+            System.out.println(name);
             
+            InformationEquipmentForm informForm = new InformationEquipmentForm(name, description);
+            informForm.setVisible(true);
         }
     }
 
