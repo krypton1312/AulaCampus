@@ -154,6 +154,10 @@ public class MainForm extends JFrame implements ActionListener, MouseListener {
             grenadeDataBase.close();
             System.exit(0);
         }
+        if(e.getSource() == adminFormB){
+            AdminForm adminForm = new AdminForm(selectedAccount);
+            adminForm.setVisible(true);
+        }
     }
     
     private void showWeapons(ObjectContainer weaponDataBase) {
