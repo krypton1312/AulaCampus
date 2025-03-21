@@ -16,9 +16,7 @@ public class Practica9 {
         ObjectContainer weapons = Db4oEmbedded.openFile("weapons.db4o");
         ObjectContainer grenades = Db4oEmbedded.openFile("grenades.db4o");
         ObjectContainer description = Db4oEmbedded.openFile("description.db4o");
-        
         LoginForm loginForm = new LoginForm(user);
-        
         while(loginForm.isVisible()){
             try{
                 Thread.sleep(100);

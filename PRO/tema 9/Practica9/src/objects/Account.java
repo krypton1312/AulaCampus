@@ -4,12 +4,22 @@ public class Account {
     private String password;
     private Boolean admin;
     private Boolean superAdmin;
+    private Boolean isPromotionRequest;
 
-    public Account(String login, String password, Boolean admin, Boolean superAdmin) {
+    public Account(String login, String password, Boolean admin, Boolean superAdmin, Boolean isPromotionRequest) {
         this.login = login;
         this.password = password;
         this.admin = admin;
         this.superAdmin = superAdmin;
+        this.isPromotionRequest = isPromotionRequest;
+    }
+
+    public Boolean isIsPromotionRequest() {
+        return isPromotionRequest;
+    }
+
+    public void setIsPromotionRequest(Boolean isPromotionRequest) {
+        this.isPromotionRequest = isPromotionRequest;
     }
 
     public String getLogin() {
@@ -46,6 +56,8 @@ public class Account {
 
     @Override
     public String toString() {
-        return "User{" + "login=" + login + ", password=" + password + ", admin=" + admin + ", superAdmin=" + superAdmin + '}';
+        return "Account{" + "login=" + login + ", password=" + password + ", admin=" + admin + ", superAdmin=" + superAdmin + ", isPromotionRequest=" + isPromotionRequest + '}';
     }
+
+    
 }

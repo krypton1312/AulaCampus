@@ -78,7 +78,7 @@ public class LoginForm extends JFrame implements ActionListener {
             if ((loginTF.getText()).equals("")) {
                 handleError("login");
             } else {
-                Account getAccount = new Account(loginTF.getText(), null, null, null);
+                Account getAccount = new Account(loginTF.getText(), null, null, null, null);
                 try {
                     ObjectSet result = user.queryByExample(getAccount);
                     if (result.hasNext()) {
@@ -94,7 +94,7 @@ public class LoginForm extends JFrame implements ActionListener {
                             if (new String(passwordTF.getPassword()).equals("")) {
                                 handleError("password");
                             } else {
-                                user.store(new Account(loginTF.getText(), new String(passwordTF.getPassword()), false, false));
+                                user.store(new Account(loginTF.getText(), new String(passwordTF.getPassword()), false, false, false));
                             }
                         }
                     }
