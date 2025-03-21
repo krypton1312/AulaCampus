@@ -51,6 +51,7 @@ public class AdminForm extends JFrame implements ActionListener{
         scroll = new JScrollPane(table);
         scroll.setBounds(10, 10, 400, 400);
         scroll.getViewport().setBackground(Color.WHITE);
+        showUsers();
         panel.add(scroll);
         
         promoteB = new JButton(promoteButtonText);
@@ -63,7 +64,7 @@ public class AdminForm extends JFrame implements ActionListener{
         String[] optionsComboBox = new String[]{"Users", "Admins"};
         selectTable = new JComboBox<>(optionsComboBox);
         selectTable.setBounds(420, 60, 200, 40);
-        selectTable.setSelectedIndex(1);
+        selectTable.setSelectedIndex(0);
         selectTable.setBackground(Color.WHITE);
         selectTable.setFocusable(false);
         panel.add(selectTable);
@@ -91,12 +92,8 @@ public class AdminForm extends JFrame implements ActionListener{
         while (result.hasNext()) {
             String[] dataUser = null;
             Account user = (Account) result.next();
-            if (selectedAccount.isSuperAdmin()) {
-                String promotionStatus = user.isIsPromotionRequest() ? "Pending" : "None";
-                dataUser = new String[]{"User", user.getLogin(), promotionStatus};
-            } else if (selectedAccount.isAdmin()) {
-                dataUser = new String[]{"User", user.getLogin()};
-            }
+            String promotionStatus = user.isIsPromotionRequest() ? "Pending" : "None";
+            dataUser = new String[]{"User", user.getLogin(), promotionStatus};
             model.addRow(dataUser);
         }
     }
@@ -114,7 +111,6 @@ public class AdminForm extends JFrame implements ActionListener{
         }
         while (result.hasNext()) {
             Account user = (Account) result.next();
-            System.out.println(user);
             String[] dataUser = {"Admin", user.getLogin(), "null"};
             model.addRow(dataUser);
         }
@@ -123,21 +119,52 @@ public class AdminForm extends JFrame implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == selectTable) {
-            
-            switch (selectTable.getSelectedIndex()) {
-                case 0:
-                    showUsers();
-                    break;
-                case 1:
-                    showAdmins();
-                    break;
-            }
+            updateTable();
         }
         if(e.getSource() == promoteB){
-            ObjectSet result = users.queryByExample(new Account(null, null, null, null, null));
-            while (result.hasNext()) {
-                Account user = (Account) result.next();
-                System.out.println(user);
+            String login = (String)model.getValueAt(table.getSelectedRow(), 1);
+            if(selectedAccount.isSuperAdmin()){
+                promoteDirectly(login);
+            }else if(selectedAccount.isAdmin()){
+                askToPromote(login);
+            }
+        }
+    }
+    
+    public void updateTable() {
+        model.setRowCount(0);
+        switch (selectTable.getSelectedIndex()) {
+            case 0:
+                showUsers();
+                break;
+            case 1:
+                showAdmins();
+                break;
+        }
+    }
+    
+    public void promoteDirectly(String login) {
+        ObjectSet result = users.queryByExample(new Account(login, null, null, null, null));
+        while (result.hasNext()) {
+            Account user = (Account) result.next();
+            user.setAdmin(true);
+            users.store(user);
+            users.commit();
+            updateTable();
+        }
+    }
+    
+    public void askToPromote(String login){
+        ObjectSet result = users.queryByExample(new Account(login, null, null, null, null));
+        while(result.hasNext()){
+            Account user = (Account) result.next();
+            if(user.isIsPromotionRequest()){
+                JOptionPane.showMessageDialog(this, "User is alredy requested to promote.", "Error", JOptionPane.ERROR_MESSAGE);
+            }else{
+                user.setIsPromotionRequest(true);
+                users.store(user);
+                users.commit();
+                updateTable();
             }
         }
     }
