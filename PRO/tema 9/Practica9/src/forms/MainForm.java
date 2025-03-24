@@ -1,5 +1,6 @@
 package forms;
 
+import com.db4o.Db4oEmbedded;
 import com.db4o.ObjectContainer;
 import com.db4o.ObjectSet;
 import java.awt.Color;
@@ -8,6 +9,7 @@ import java.awt.Dimension;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseEvent;
+import static java.awt.event.MouseEvent.BUTTON2;
 import java.awt.event.MouseListener;
 import javax.swing.DefaultListCellRenderer;
 import javax.swing.JButton;
@@ -41,6 +43,8 @@ public class MainForm extends JFrame implements ActionListener, MouseListener {
     private InputForm inputForm;
     private Account selectedAccount;
     private JButton adminFormB;
+    private AdminForm adminForm;
+    private ObjectContainer users;
     
     
     public MainForm(ObjectContainer gearDataBase, ObjectContainer weaponDataBase, ObjectContainer grenadeDataBase, Account selectedAccount, ObjectContainer description){
@@ -48,6 +52,7 @@ public class MainForm extends JFrame implements ActionListener, MouseListener {
         this.weaponDataBase = weaponDataBase;
         this.grenadeDataBase = grenadeDataBase;
         this.selectedAccount = selectedAccount;
+        this.users = Db4oEmbedded.openFile("users.db4o");
         this.description = description;
         this.inputForm = new InputForm(gearDataBase, weaponDataBase, grenadeDataBase);
         this.setTitle("CS2 Equipment List");
@@ -157,7 +162,7 @@ public class MainForm extends JFrame implements ActionListener, MouseListener {
             System.exit(0);
         }
         if(e.getSource() == adminFormB){
-            AdminForm adminForm = new AdminForm(selectedAccount);
+            adminForm = new AdminForm(selectedAccount, users);
             adminForm.setVisible(true);
         }
     }
@@ -320,7 +325,7 @@ public class MainForm extends JFrame implements ActionListener, MouseListener {
 
     @Override
     public void mouseClicked(MouseEvent me) {
-        if (me.getClickCount() == 3) {
+        if (me.getClickCount() == 2 && me.getButton() == MouseEvent.BUTTON3) {
             if (this.selectedAccount.isAdmin()) {
                 int row = table.rowAtPoint(me.getPoint());
                 int col = table.columnAtPoint(me.getPoint());
@@ -348,7 +353,7 @@ public class MainForm extends JFrame implements ActionListener, MouseListener {
                 JOptionPane.showMessageDialog(null, "You dont have permission to modificate.");
             }
         }
-        if(me.getClickCount() == 2){
+        if(me.getClickCount() == 2 && me.getButton() == MouseEvent.BUTTON1){
             int row = table.rowAtPoint(me.getPoint());
             String name = (String)model.getValueAt(row, 0);
             System.out.println(name);
