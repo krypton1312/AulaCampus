@@ -321,13 +321,13 @@ public class MainForm extends JFrame implements ActionListener, MouseListener {
             }
         }
     }
-    private void deleteDesc(int item){
-        ObjectSet result = description.queryByExample(new Description((String)model.getValueAt(item, 3), null, null));
+    private void deleteDesc(int item) {
+        ObjectSet result = description.queryByExample(new Description((String) model.getValueAt(item, 0), null, null));
         if (result.hasNext()) {
             Description desc = (Description) result.next();
             File image = new File(desc.getPhoto());
             image.delete();
-            description.delete(result);
+            description.delete(desc);
         }
     }
 

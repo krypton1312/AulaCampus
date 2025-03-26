@@ -4,6 +4,7 @@ import com.db4o.*;
 import forms.LoginForm;
 import forms.MainForm;
 import objects.Account;
+import objects.Description;
 
 public class Practica9 {
 
@@ -13,7 +14,7 @@ public class Practica9 {
         ObjectContainer weapons = Db4oEmbedded.openFile("weapons.db4o");
         ObjectContainer grenades = Db4oEmbedded.openFile("grenades.db4o");
         ObjectContainer description = Db4oEmbedded.openFile("description.db4o");
-
+        
         /*user.store(new Account("user", "user", false, false, false));
         user.store(new Account("userPromoted", "", false, false, true));
         user.store(new Account("admin", "admin", true, false, false));

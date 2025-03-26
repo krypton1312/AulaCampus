@@ -355,7 +355,7 @@ public class InputForm extends JFrame implements ActionListener {
     private String saveImage(File imageFile) {
         File dest = null;
         try {
-            dest = new File(IMAGE_PATH + imageFile.getName());
+            dest = new File(IMAGE_PATH + nameTF.getText() + ".png");
             ImageIO.write(ImageIO.read(imageFile), "png", dest);
         } catch (IOException ex) {
             JOptionPane.showMessageDialog(this, "Error saving image", "Error", JOptionPane.ERROR_MESSAGE);
