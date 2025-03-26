@@ -5,8 +5,12 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.event.*;
+import java.io.File;
+import java.io.IOException;
 import java.util.stream.Stream;
+import javax.imageio.ImageIO;
 import javax.swing.*;
+import objects.Description;
 import objects.Gear;
 import objects.Grenade;
 import objects.Weapon;
@@ -27,6 +31,9 @@ public class InputForm extends JFrame implements ActionListener {
     JLabel helmet;
     JLabel defuseT;
     JLabel categoryT;
+    JLabel descT;
+    JLabel imagePreview;
+    JTextArea descTF;
     JTextField nameTF;
     JTextField typeTF;
     JTextField priceTF;
@@ -40,21 +47,26 @@ public class InputForm extends JFrame implements ActionListener {
     JTextField defuseTF;
     JComboBox categoryCB;
     JButton inputB;
+    JButton uploadB;
+    File selectedImage;
+    static final String IMAGE_PATH = "src/images/equipphoto/";
     private ObjectContainer gearDataBase;
     private ObjectContainer weaponDataBase;
     private ObjectContainer grenadeDataBase;
+    private ObjectContainer descriptionDataBase;
 
-    public InputForm(ObjectContainer gearDataBase, ObjectContainer weaponDataBase, ObjectContainer grenadeDataBase) {
+    public InputForm(ObjectContainer gearDataBase, ObjectContainer weaponDataBase, ObjectContainer grenadeDataBase, ObjectContainer descriptionDataBase) {
         this.gearDataBase = gearDataBase;
         this.weaponDataBase = weaponDataBase;
         this.grenadeDataBase = grenadeDataBase;
+        this.descriptionDataBase = descriptionDataBase;
         this.setTitle("Input new item");
         this.setResizable(false);
    
         panel = new JPanel();
         panel.setLayout(null);
         panel.setBackground(Color.GRAY);
-        panel.setPreferredSize(new Dimension(620, 350));
+        panel.setPreferredSize(new Dimension(620, 500));
         this.add(panel);
 
         int labelX1 = 30, fieldX1 = 160, labelX2 = 340, fieldX2 = 470;
@@ -204,9 +216,40 @@ public class InputForm extends JFrame implements ActionListener {
         defuseTF.setBounds(fieldX2, y, width, height);
         defuseTF.setBackground(Color.WHITE);
         panel.add(defuseTF);
+        
+        y += gap;
+        
+        descT = new JLabel("Description:");
+        descT.setBounds(30, y, 560, 30);
+        descT.setOpaque(true);
+        descT.setBackground(Color.WHITE);
+        descT.setHorizontalAlignment(SwingConstants.CENTER);
+        panel.add(descT);
+
+        y += 35;
+
+        descTF = new JTextArea();
+        JScrollPane scrollPane = new JScrollPane(descTF);
+        scrollPane.setBounds(30, y, 560, 80);
+        panel.add(scrollPane);
+
+        y += 90;
+
+        uploadB = new JButton("Upload Image");
+        uploadB.setBounds(labelX1, y, width, height);
+        uploadB.addActionListener(this);
+        panel.add(uploadB);
+
+        imagePreview = new JLabel();
+        imagePreview.setBounds(fieldX1, y, 400, height);
+        imagePreview.setOpaque(true);
+        imagePreview.setBackground(Color.LIGHT_GRAY);
+        panel.add(imagePreview);
+
+        y += 50;
 
         inputB = new JButton("Submit");
-        inputB.setBounds(240, y + 50, 120, 40);
+        inputB.setBounds(240, y, 120, 40);
         inputB.setBackground(Color.WHITE);
         inputB.setFocusable(false);
         inputB.addActionListener(this);
@@ -226,6 +269,15 @@ public class InputForm extends JFrame implements ActionListener {
             insertToDataBase();
             this.dispatchEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
             this.dispose();
+        }
+        if (e.getSource() == uploadB) {
+            JFileChooser fileChooser = new JFileChooser();
+            fileChooser.setFileFilter(new javax.swing.filechooser.FileNameExtensionFilter("PNG Images", "png"));
+            int returnValue = fileChooser.showOpenDialog(this);
+            if (returnValue == JFileChooser.APPROVE_OPTION) {
+                selectedImage = fileChooser.getSelectedFile();
+                imagePreview.setText(selectedImage.getName());
+            }
         }
     }
 
@@ -293,6 +345,24 @@ public class InputForm extends JFrame implements ActionListener {
                 gearDataBase.commit();
                 break;
         }
-        
+        if (selectedImage != null) {
+            saveImage(selectedImage);
+        }
+        Description desc = new Description(nameTF.getText(), descTF.getText(), saveImage(selectedImage));
+        descriptionDataBase.store(desc);
+        descriptionDataBase.commit();
     }
+    private String saveImage(File imageFile) {
+        File dest = null;
+        try {
+            dest = new File(IMAGE_PATH + nameTF.getText() + ".png");
+            ImageIO.write(ImageIO.read(imageFile), "png", dest);
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(this, "Error saving image", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        return dest.getPath();
+    }
+    
 }
+
+

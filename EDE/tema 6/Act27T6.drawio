@@ -1,0 +1,103 @@
+<mxfile host="Electron" modified="2025-03-24T12:30:50.154Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.7.5 Chrome/114.0.5735.289 Electron/25.8.1 Safari/537.36" etag="h1LbhhQrQqbQNgDWjsbu" version="21.7.5" type="device">
+  <diagram name="Página-1" id="UueU65Pqir6GzhaJa1Ds">
+    <mxGraphModel dx="838" dy="973" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="48_FCxHxE-Q_yakoIQMy-1" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="190" y="150" width="570" height="470" as="geometry" />
+        </mxCell>
+        <mxCell id="48_FCxHxE-Q_yakoIQMy-2" value="Estudiante" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="110" y="310" width="30" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="48_FCxHxE-Q_yakoIQMy-4" value="revisar temario" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="240" y="280" width="90" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="48_FCxHxE-Q_yakoIQMy-7" value="practicar examen" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="240" y="170" width="90" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="48_FCxHxE-Q_yakoIQMy-8" value="" style="endArrow=none;html=1;rounded=0;exitX=1;exitY=0.3333333333333333;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="48_FCxHxE-Q_yakoIQMy-2" target="48_FCxHxE-Q_yakoIQMy-4">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="360" y="420" as="sourcePoint" />
+            <mxPoint x="410" y="370" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="48_FCxHxE-Q_yakoIQMy-9" value="&amp;lt;&amp;lt;extends&amp;gt;&amp;gt;" style="endArrow=open;endSize=12;dashed=1;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="48_FCxHxE-Q_yakoIQMy-7" target="48_FCxHxE-Q_yakoIQMy-4">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="310" y="390" as="sourcePoint" />
+            <mxPoint x="470" y="390" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="48_FCxHxE-Q_yakoIQMy-10" value="inscribirse en el examen" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="240" y="370" width="90" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="48_FCxHxE-Q_yakoIQMy-11" value="adjuntar dni" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="410" y="410" width="90" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="48_FCxHxE-Q_yakoIQMy-12" value="solicitar beca" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="410" y="320" width="90" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="48_FCxHxE-Q_yakoIQMy-13" value="esperar 3 dias" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="590" y="410" width="90" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="48_FCxHxE-Q_yakoIQMy-14" value="realizar examen" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="360" y="510" width="90" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="48_FCxHxE-Q_yakoIQMy-15" value="almacenar nota" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="550" y="510" width="90" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="48_FCxHxE-Q_yakoIQMy-16" value="" style="endArrow=none;html=1;rounded=0;exitX=1;exitY=0.3333333333333333;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="48_FCxHxE-Q_yakoIQMy-2" target="48_FCxHxE-Q_yakoIQMy-10">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="150" y="340" as="sourcePoint" />
+            <mxPoint x="250" y="315" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="48_FCxHxE-Q_yakoIQMy-17" value="&amp;lt;&amp;lt;extends&amp;gt;&amp;gt;" style="endArrow=open;endSize=12;dashed=1;html=1;rounded=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="48_FCxHxE-Q_yakoIQMy-12" target="48_FCxHxE-Q_yakoIQMy-10">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="400" y="390" as="sourcePoint" />
+            <mxPoint x="560" y="390" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="48_FCxHxE-Q_yakoIQMy-18" value="&amp;lt;&amp;lt;include&amp;gt;&amp;gt;" style="endArrow=open;endSize=12;dashed=1;html=1;rounded=0;exitX=1;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="48_FCxHxE-Q_yakoIQMy-10" target="48_FCxHxE-Q_yakoIQMy-11">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="400" y="390" as="sourcePoint" />
+            <mxPoint x="560" y="390" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="48_FCxHxE-Q_yakoIQMy-19" value="&amp;lt;&amp;lt;include&amp;gt;&amp;gt;" style="endArrow=open;endSize=12;dashed=1;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="48_FCxHxE-Q_yakoIQMy-11" target="48_FCxHxE-Q_yakoIQMy-13">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="327" y="423" as="sourcePoint" />
+            <mxPoint x="420" y="445" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="48_FCxHxE-Q_yakoIQMy-20" value="&amp;lt;&amp;lt;include&amp;gt;&amp;gt;" style="endArrow=open;endSize=12;dashed=1;html=1;rounded=0;exitX=0;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="48_FCxHxE-Q_yakoIQMy-13" target="48_FCxHxE-Q_yakoIQMy-14">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="337" y="433" as="sourcePoint" />
+            <mxPoint x="430" y="455" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="48_FCxHxE-Q_yakoIQMy-21" value="&amp;lt;&amp;lt;include&amp;gt;&amp;gt;" style="endArrow=open;endSize=12;dashed=1;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="48_FCxHxE-Q_yakoIQMy-14" target="48_FCxHxE-Q_yakoIQMy-15">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="347" y="443" as="sourcePoint" />
+            <mxPoint x="440" y="465" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="48_FCxHxE-Q_yakoIQMy-22" value="sistema para la gestión de exámenes de cursos online" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="450" y="150" width="310" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="48_FCxHxE-Q_yakoIQMy-23" value="Servidor" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;" vertex="1" parent="1">
+          <mxGeometry x="790" y="230" width="30" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="48_FCxHxE-Q_yakoIQMy-24" value="enviar email con la nota" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="585" y="240" width="120" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="48_FCxHxE-Q_yakoIQMy-25" value="" style="endArrow=none;html=1;rounded=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;exitX=0;exitY=0.3333333333333333;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="48_FCxHxE-Q_yakoIQMy-23" target="48_FCxHxE-Q_yakoIQMy-24">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="500" y="420" as="sourcePoint" />
+            <mxPoint x="550" y="370" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

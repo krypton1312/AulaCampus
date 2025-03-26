@@ -9,7 +9,7 @@ public class Description {
         this.description = description;
         this.photo = photo;
     }
-
+    
     public String getName() {
         return name;
     }

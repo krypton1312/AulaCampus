@@ -1,5 +1,6 @@
 package forms;
 
+import com.db4o.Db4oEmbedded;
 import com.db4o.ObjectContainer;
 import com.db4o.ObjectSet;
 import java.awt.Color;
@@ -9,6 +10,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.io.File;
 import javax.swing.DefaultListCellRenderer;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -41,6 +43,8 @@ public class MainForm extends JFrame implements ActionListener, MouseListener {
     private InputForm inputForm;
     private Account selectedAccount;
     private JButton adminFormB;
+    private AdminForm adminForm;
+    private ObjectContainer users;
     
     
     public MainForm(ObjectContainer gearDataBase, ObjectContainer weaponDataBase, ObjectContainer grenadeDataBase, Account selectedAccount, ObjectContainer description){
@@ -48,8 +52,9 @@ public class MainForm extends JFrame implements ActionListener, MouseListener {
         this.weaponDataBase = weaponDataBase;
         this.grenadeDataBase = grenadeDataBase;
         this.selectedAccount = selectedAccount;
+        this.users = Db4oEmbedded.openFile("users.db4o");
         this.description = description;
-        this.inputForm = new InputForm(gearDataBase, weaponDataBase, grenadeDataBase);
+        this.inputForm = new InputForm(gearDataBase, weaponDataBase, grenadeDataBase, description);
         this.setTitle("CS2 Equipment List");
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setResizable(false);
@@ -129,7 +134,6 @@ public class MainForm extends JFrame implements ActionListener, MouseListener {
         inputForm.addWindowListener(new java.awt.event.WindowAdapter() {
             @Override
             public void windowClosing(java.awt.event.WindowEvent windowEvent) {
-                System.out.println("InputForm was closed!");
                 showUpdateTable();
             }
         });
@@ -145,6 +149,7 @@ public class MainForm extends JFrame implements ActionListener, MouseListener {
             showUpdateTable();
         }
         if(e.getSource() == delB){
+            deleteDesc(table.getSelectedRow());
             delSelectedItem(table.getSelectedRow());
         }
         if(e.getSource() == addB){
@@ -157,7 +162,7 @@ public class MainForm extends JFrame implements ActionListener, MouseListener {
             System.exit(0);
         }
         if(e.getSource() == adminFormB){
-            AdminForm adminForm = new AdminForm(selectedAccount);
+            adminForm = new AdminForm(selectedAccount, users);
             adminForm.setVisible(true);
         }
     }
@@ -208,7 +213,6 @@ public class MainForm extends JFrame implements ActionListener, MouseListener {
             JOptionPane.showMessageDialog(this, "Could not determine the table for deletion.", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
-        
         tableDB.delete(itemToDelete.next());
 
         model.removeRow(item);
@@ -317,10 +321,19 @@ public class MainForm extends JFrame implements ActionListener, MouseListener {
             }
         }
     }
+    private void deleteDesc(int item) {
+        ObjectSet result = description.queryByExample(new Description((String) model.getValueAt(item, 0), null, null));
+        if (result.hasNext()) {
+            Description desc = (Description) result.next();
+            File image = new File(desc.getPhoto());
+            image.delete();
+            description.delete(desc);
+        }
+    }
 
     @Override
     public void mouseClicked(MouseEvent me) {
-        if (me.getClickCount() == 3) {
+        if (me.getClickCount() == 2 && me.getButton() == MouseEvent.BUTTON3) {
             if (this.selectedAccount.isAdmin()) {
                 int row = table.rowAtPoint(me.getPoint());
                 int col = table.columnAtPoint(me.getPoint());
@@ -348,10 +361,9 @@ public class MainForm extends JFrame implements ActionListener, MouseListener {
                 JOptionPane.showMessageDialog(null, "You dont have permission to modificate.");
             }
         }
-        if(me.getClickCount() == 2){
+        if(me.getClickCount() == 2 && me.getButton() == MouseEvent.BUTTON1){
             int row = table.rowAtPoint(me.getPoint());
             String name = (String)model.getValueAt(row, 0);
-            System.out.println(name);
             
             InformationEquipmentForm informForm = new InformationEquipmentForm(name, description);
             informForm.setVisible(true);

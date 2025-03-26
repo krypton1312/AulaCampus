@@ -1,0 +1,25 @@
+<mxfile host="Electron" modified="2025-03-24T12:03:47.537Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.7.5 Chrome/114.0.5735.289 Electron/25.8.1 Safari/537.36" etag="7uP42_h0GuGaU_xfnXmw" version="21.7.5" type="device">
+  <diagram name="Página-1" id="4IjKF1oeefSW1MILUJDa">
+    <mxGraphModel dx="958" dy="973" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="gnJEQKHTD4k_AnkT4OKE-1" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="130" y="70" width="660" height="630" as="geometry" />
+        </mxCell>
+        <mxCell id="gnJEQKHTD4k_AnkT4OKE-2" value="sistema para una inmobilaria" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="130" y="70" width="160" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="gnJEQKHTD4k_AnkT4OKE-3" value="Usuario" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="50" y="200" width="30" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="gnJEQKHTD4k_AnkT4OKE-4" value="publicar inmueble del cliente" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="200" y="150" width="90" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="gnJEQKHTD4k_AnkT4OKE-5" value="eliminar inmueble del cliente" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="200" y="240" width="90" height="50" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
