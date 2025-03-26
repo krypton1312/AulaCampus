@@ -9,8 +9,8 @@ import java.awt.Dimension;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseEvent;
-import static java.awt.event.MouseEvent.BUTTON2;
 import java.awt.event.MouseListener;
+import java.io.File;
 import javax.swing.DefaultListCellRenderer;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -54,7 +54,7 @@ public class MainForm extends JFrame implements ActionListener, MouseListener {
         this.selectedAccount = selectedAccount;
         this.users = Db4oEmbedded.openFile("users.db4o");
         this.description = description;
-        this.inputForm = new InputForm(gearDataBase, weaponDataBase, grenadeDataBase);
+        this.inputForm = new InputForm(gearDataBase, weaponDataBase, grenadeDataBase, description);
         this.setTitle("CS2 Equipment List");
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setResizable(false);
@@ -134,7 +134,6 @@ public class MainForm extends JFrame implements ActionListener, MouseListener {
         inputForm.addWindowListener(new java.awt.event.WindowAdapter() {
             @Override
             public void windowClosing(java.awt.event.WindowEvent windowEvent) {
-                System.out.println("InputForm was closed!");
                 showUpdateTable();
             }
         });
@@ -150,6 +149,7 @@ public class MainForm extends JFrame implements ActionListener, MouseListener {
             showUpdateTable();
         }
         if(e.getSource() == delB){
+            deleteDesc(table.getSelectedRow());
             delSelectedItem(table.getSelectedRow());
         }
         if(e.getSource() == addB){
@@ -213,7 +213,6 @@ public class MainForm extends JFrame implements ActionListener, MouseListener {
             JOptionPane.showMessageDialog(this, "Could not determine the table for deletion.", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
-        
         tableDB.delete(itemToDelete.next());
 
         model.removeRow(item);
@@ -322,6 +321,15 @@ public class MainForm extends JFrame implements ActionListener, MouseListener {
             }
         }
     }
+    private void deleteDesc(int item){
+        ObjectSet result = description.queryByExample(new Description((String)model.getValueAt(item, 3), null, null));
+        if (result.hasNext()) {
+            Description desc = (Description) result.next();
+            File image = new File(desc.getPhoto());
+            image.delete();
+            description.delete(result);
+        }
+    }
 
     @Override
     public void mouseClicked(MouseEvent me) {
@@ -356,7 +364,6 @@ public class MainForm extends JFrame implements ActionListener, MouseListener {
         if(me.getClickCount() == 2 && me.getButton() == MouseEvent.BUTTON1){
             int row = table.rowAtPoint(me.getPoint());
             String name = (String)model.getValueAt(row, 0);
-            System.out.println(name);
             
             InformationEquipmentForm informForm = new InformationEquipmentForm(name, description);
             informForm.setVisible(true);

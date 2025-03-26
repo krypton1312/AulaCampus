@@ -4,10 +4,7 @@ import com.db4o.*;
 import forms.LoginForm;
 import forms.MainForm;
 import objects.Account;
-//Gear(String name, String type, double price, int armourValue, boolean hasHelmet, int defuseTime)
 
-//Weapons(String name, String type, double price, int damage, double armourPenetration, int fireRate, int magazineSize)
-//Grenade(String name, String type, double price, String effect
 public class Practica9 {
 
     public static void main(String[] args) {
@@ -36,7 +33,6 @@ public class Practica9 {
         
         if(loginForm.isLoginSuccessfull){
             Account selectedAccount = loginForm.getSelectedAccount();
-            System.out.println(selectedAccount);
             user.close();
             MainForm mainForm = new MainForm(gear, weapons, grenades, selectedAccount, description);
         }
