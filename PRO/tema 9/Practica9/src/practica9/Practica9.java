@@ -4,7 +4,6 @@ import com.db4o.*;
 import forms.LoginForm;
 import forms.MainForm;
 import objects.Account;
-import objects.Description;
 
 public class Practica9 {
 
