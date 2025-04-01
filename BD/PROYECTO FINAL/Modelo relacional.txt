@@ -1,0 +1,50 @@
+#Modelo relacional
+
+
+#Entidades
+Jugador(id_jugador, nickname, nombre, apellido, edad, paisNacim, ELO)
+CP{id_jugador}
+
+JugadorProfesional(rol, id_jugador)
+CP{id_jugador} 
+CAj{id_jugador} hace referencia a Jugador
+
+Entenador(jugadorRetirado, id_jugador)
+CP{id_jugador}
+CAj{id_jugador} hace referencia a JugadorProfesional
+
+Skins(id_skin, nombre, rareza, precio_mercado, id_jugador, id_arma)
+CP{id_skin}
+CAj{id_jugador} referencia a Jugador
+CAj{id_arma} referencia a Skins
+UNI{id_jugador}
+UNI{id_arma}
+VNN{id_arma}
+
+Arma(id_arma, nombre, precio, disponible_para)
+CP{id_arma}
+UNI{nombre}
+
+Partida(id_partida, resultado, fecha)
+CP{id_partida}
+
+Equipos(id_equipo, nombre, pais, fechaCreacion)
+CP{id_equipo}
+UNI{nombre}
+
+Mapa(id_mapa, nombre, tipo)
+CP{id_mapa}
+UNI{nombre}
+
+Torneos(id_torneo, nombre, premio, fecha)
+CP{id_torneo}
+
+# Relaciones
+
+jugador-skins minimas + maximas
+
+skins-Arma
+
+
+
+
