@@ -25,8 +25,15 @@ Arma(id_arma, nombre, precio, disponible_para)
 CP{id_arma}
 UNI{nombre}
 
-Partida(id_partida, resultado, fecha)
+Partida(id_partida, resultado, fecha, id_mapa, id_equipo1, id_equipo2)
 CP{id_partida}
+CAj{id_mapa} referencia a Mapa
+CAj{id_equipo1} referencia a Equipos
+CAj{id_equipo2} referencia a Equipos
+UNI{id_mapa}
+VNN{id_mapa}
+UNI{id_equipo1, id_equipo2}
+
 
 Equipos(id_equipo, nombre, pais, fechaCreacion)
 CP{id_equipo}
@@ -43,7 +50,13 @@ CP{id_torneo}
 
 jugador-skins minimas + maximas
 
-skins-Arma
+skins-Arma minimas + maximas
+
+partida-mapa minimas + maximas
+
+partida-equipos
+
+Juega(id_partida, id_equipo)
 
 
 
