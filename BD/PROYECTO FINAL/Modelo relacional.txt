@@ -5,9 +5,12 @@
 Jugador(id_jugador, nickname, nombre, apellido, edad, paisNacim, ELO)
 CP{id_jugador}
 
-JugadorProfesional(rol, id_jugador)
+JugadorProfesional(rol, id_jugador, id_equipo)
 CP{id_jugador} 
 CAj{id_jugador} hace referencia a Jugador
+CAj{id_equipo} referencia a Equipos
+Jx: JugadorProfesional, Ex:Estatistica
+Ɐ Jx(JugadorProfesional(Jx) -> Ǝ Ex(Estatistica(Ex) ↑ Jx.id_jugador = Ex.id_jugador))
 
 Entenador(jugadorRetirado, id_jugador)
 CP{id_jugador}
@@ -24,6 +27,8 @@ VNN{id_arma}
 Arma(id_arma, nombre, precio, disponible_para)
 CP{id_arma}
 UNI{nombre}
+Ax: Arma, Ex:Estatistica
+Ɐ Ax(Arma(Ax) -> Ǝ Ex(Estatistica(Ex) ↑ Ax.id_arma = Ex.id_jugador))
 
 Partida(id_partida, resultado, fecha, id_mapa, id_equipo1, id_equipo2)
 CP{id_partida}
@@ -33,31 +38,36 @@ CAj{id_equipo2} referencia a Equipos
 UNI{id_mapa}
 VNN{id_mapa}
 UNI{id_equipo1, id_equipo2}
+Px: Partida, Ex:Estatistica
+Ɐ Px(Partida(Px) -> Ǝ Ex(Estatistica(Ex) ↑ Ax.id_partida = Ex.id_partida))
 
 
-Equipos(id_equipo, nombre, pais, fechaCreacion)
+Equipos(id_equipo, nombre, pais, fechaCreacion, id_jugador)
 CP{id_equipo}
+CAj{id_jugador} referencia a Entenador
+UNI{id_jugador}
 UNI{nombre}
 
 Mapa(id_mapa, nombre, tipo)
 CP{id_mapa}
 UNI{nombre}
 
-Torneos(id_torneo, nombre, premio, fecha)
+Torneos(id_torneo, nombre, premio, fecha, id_equipo)
 CP{id_torneo}
+CAj{id_equipo} referencia a Equipos
 
 # Relaciones
 
-jugador-skins minimas + maximas
+Historia(id_jugador, id_equipo, salario, fechaEntrada, fechaSalida)
+CP{id_jugador, id_equipo}
+CAj{id_jugador} referencia a JugadorProfesional
+CAj{id_equipo} referencia a Equipos 
 
-skins-Arma minimas + maximas
+Estatistica(id_jugador, id_arma, id_partida, death, kills)
+CP{id_jugador, id_arma, id_partida}
+CAj{id_jugador} referencia a JugadorProfesional
+CAj{id_arma} referencia a Arma
+CAj{id_partida} referencia a Partida
+VNN{id_jugador, id_arma, id_partida}
 
-partida-mapa minimas + maximas
-
-partida-equipos
-
-Juega(id_partida, id_equipo)
-
-
-
-
+Ɐ Ǝ
