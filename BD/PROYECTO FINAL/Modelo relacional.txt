@@ -2,7 +2,7 @@
 
 
 #Entidades
-Jugador(id_jugador, nickname, nombre, apellido, edad, paisNacim, ELO)
+Jugador(id_jugador, nickname, nombre, apellido, fechaNacim, paisNacim, ELO)
 CP{id_jugador}
 
 JugadorProfesional(rol, id_jugador, id_equipo)
@@ -19,7 +19,7 @@ CAj{id_jugador} hace referencia a JugadorProfesional
 Skins(id_skin, nombre, rareza, precio_mercado, id_jugador, id_arma)
 CP{id_skin}
 CAj{id_jugador} referencia a Jugador
-CAj{id_arma} referencia a Skins
+CAj{id_arma} referencia a Arma
 UNI{id_jugador}
 UNI{id_arma}
 VNN{id_arma}
@@ -28,7 +28,7 @@ Arma(id_arma, nombre, precio, disponible_para)
 CP{id_arma}
 UNI{nombre}
 Ax: Arma, Ex:Estatistica
-Ɐ Ax(Arma(Ax) -> Ǝ Ex(Estatistica(Ex) ↑ Ax.id_arma = Ex.id_jugador))
+Ɐ Ax(Arma(Ax) -> Ǝ Ex(Estatistica(Ex) ↑ Ax.id_arma = Ex.id_arma))
 
 Partida(id_partida, resultado, fecha, id_mapa, id_equipo1, id_equipo2)
 CP{id_partida}
